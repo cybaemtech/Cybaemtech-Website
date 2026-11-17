@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://www.cybaemtech.com/</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/hero-bg.webp</image:loc>
+      <image:title>Cybaem Tech Enterprise IT &amp; Software Solutions</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cybaem-logo.webp</image:loc>
+      <image:title>Cybaem Tech Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/world-map.svg</image:loc>
+      <image:title>Global Technology Infrastructure Map</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/about</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/about-code.avif</image:loc>
+      <image:title>Software Engineering &amp; Architecture</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/about-datacenter.avif</image:loc>
+      <image:title>Global Cloud Datacenter Infrastructure</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/about-mission.avif</image:loc>
+      <image:title>Cybaem Tech Mission &amp; Vision</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/team.webp</image:loc>
+      <image:title>Cybaem Tech Core Engineering Team</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/life-at-cybaemtech</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/it-bg.png</image:loc>
+      <image:title>Life at Cybaem Tech Culture &amp; Collaboration</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/contact</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/contact-hero-new.webp</image:loc>
+      <image:title>Contact Cybaem Tech Hinjewadi Pune</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/contact-hero.avif</image:loc>
+      <image:title>Consultation &amp; Strategic Support</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/portfolio</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/portfolio-header.webp</image:loc>
+      <image:title>Cybaem Tech Client Case Studies &amp; Portfolio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/CRM-website.webp</image:loc>
+      <image:title>Enterprise CRM Solution</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Ecomm-website.webp</image:loc>
+      <image:title>E-Commerce Experience Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/corporate-websites.webp</image:loc>
+      <image:title>Corporate Digital Web Systems</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/saas-website.webp</image:loc>
+      <image:title>Scalable B2B SaaS Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/education.webp</image:loc>
+      <image:title>EdTech Learning Management Solution</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/leadership</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/leadership-hero.webp</image:loc>
+      <image:title>Cybaem Tech Executive Leadership</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/cloud-security</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cloud/cloud-header.png</image:loc>
+      <image:title>Cloud &amp; Security Architecture</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cta.png</image:loc>
+      <image:title>Enterprise Cloud Protection</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/cloud-security/it-infrastructure-services</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/it-infra1.png</image:loc>
+      <image:title>Managed IT Infrastructure Services</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/cloud-security/cloud-solutions</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cloud/cloud-header.png</image:loc>
+      <image:title>Enterprise Cloud Solutions &amp; Migration</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/cloud-security/cybersecurity</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cybersecurity/proactive-cybersecurity.jpg</image:loc>
+      <image:title>Proactive Cybersecurity Shield &amp; Global Protection</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cybersecurity/security-operations-center.jpg</image:loc>
+      <image:title>24/7 Security Operations Center (SOC)</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/software-platforms</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Cybaem%20nova.png</image:loc>
+      <image:title>Software &amp; Digital Platforms Engineering</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/software-platforms/enterprise-software</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/enterprise-hero-1.avif</image:loc>
+      <image:title>Enterprise Software Custom Development</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/enterprise-hero-2.avif</image:loc>
+      <image:title>Business Workflow Modernization</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Tech-port/Enterprise%20Custom%20Software.png</image:loc>
+      <image:title>Enterprise Platform Architecture</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/software-platforms/mobile-app-development</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/mobile-header.png</image:loc>
+      <image:title>Native iOS, Android &amp; Cross-Platform Mobile Applications</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/software-platforms/web-systems</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/web-systems-hero.webp</image:loc>
+      <image:title>High-Performance Web Systems</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/web-hero.avif</image:loc>
+      <image:title>Enterprise Web Architecture</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/web-corporate.avif</image:loc>
+      <image:title>Corporate Web Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/web-ecommerce.avif</image:loc>
+      <image:title>Omnichannel eCommerce Systems</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Tech-port/High-Performance%20Web%20systems.png</image:loc>
+      <image:title>Web Platforms Portfolio</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/solutions/it-staff-augmentation</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/it.webp</image:loc>
+      <image:title>Elite IT Staff Augmentation</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/it1.webp</image:loc>
+      <image:title>Dedicated Onsite IT Engineers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Tech-port/Elite%20IT%20Staff.png</image:loc>
+      <image:title>48-Hour Talent Deployment</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/digital-growth</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/digihero.webp</image:loc>
+      <image:title>Turn Digital Presence into Business Growth</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/Tech-port/Digital%20revenue%20and%20growth.png</image:loc>
+      <image:title>Growth &amp; Revenue Architecture</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/digital-growth/performance-marketing</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/digihero.png</image:loc>
+      <image:title>Performance Marketing Google &amp; Meta Ads</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/digital-growth/seo-aeo-geo</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/digihero.webp</image:loc>
+      <image:title>AI-Powered Search Optimization SEO AEO GEO</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/digital-growth/social-media-management</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/cta.png</image:loc>
+      <image:title>Social Media Brand Growth &amp; Engagement</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/videos/foundation-day-celebration-2026</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/video/thumbnails/foundation-day-celebration-2026.jpg</image:loc>
+      <image:title>Foundation day celebration 2026</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/videos/it-infrastructure-setup-for-smarter-business-connectivity</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/video/thumbnails/it-infrastructure-setup-for-smarter-business-connectivity.jpg</image:loc>
+      <image:title>IT Infrastructure Setup for Smarter Business Connectivity</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/in/software-company-in-pune</loc>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/location/surat-wala-mark-plzao.webp</image:loc>
+      <image:title>Cybaem Tech Office at Suratwala Mark Plazzo Hinjewadi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.cybaemtech.com/images/location/rajiv-gandhi-infotech-park.webp</image:loc>
+      <image:title>Rajiv Gandhi Infotech Park Hinjewadi Pune</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/case-studies-brands-that-transformed-sales-through-touchpoint-optimization</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/12/b88a2b47821c8b47507781b773e5c6d3.jpg?w=736</image:loc>
+      <image:title>Case Studies: Brands That Transformed Sales Through Touchpoint&amp;nbsp;Optimization.</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/understanding-buyer-behaviour-through-digital-touchpoint-analysis</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/12/40b61852492fb4813c363de1224c6ac0.jpg?w=1024</image:loc>
+      <image:title>Understanding Buyer Behaviour Through Digital Touchpoint&amp;nbsp;Analysis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/how-to-turn-website-visitors-into-it-service-leads</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/12/e188989e91ce856b2358bf7c79b399f7.jpg?w=960</image:loc>
+      <image:title>How to Turn Website Visitors into IT Service&amp;nbsp;Leads</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/how-an-seo-ppc-agency-for-it-companies-drives-b2b-leads</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/12/ac95fa2a9a15d88c378c554efa2239f9.jpg?w=1024</image:loc>
+      <image:title>How an SEO &amp;amp; PPC Agency for IT Companies Drives B2B&amp;nbsp;Leads</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/end-to-end-b2b-digital-marketing-services-in-india-for-high-value-leads</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/11/65ad3781636e2900253d93967081dac0.jpg?w=574</image:loc>
+      <image:title>End-to-End B2B Digital Marketing Services in India for High-Value&amp;nbsp;Leads</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/best-digital-marketing-strategy-for-pune-it-saas-companies-cybaem-tech</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/11/dd5c606657cc8d9b5095644914825d8d.jpg?w=683</image:loc>
+      <image:title>Best Digital Marketing Strategy for Pune IT &amp;amp; SaaS Companies | Cybaem&amp;nbsp;Tech</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/strengthening-digital-trust-why-cybersecurity-is-every-businesss-priority</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/10/871005a54223842c4b891d8864b67acb.jpg?w=626</image:loc>
+      <image:title>Strengthening Digital Trust: Why Cybersecurity Is Every Business’s&amp;nbsp;Priority</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cybaemtech.com/blog/the-psychology-of-digital-trust-why-customers-choose-one-brand-over-another</loc>
+    <image:image>
+      <image:loc>https://cybaemtech.wordpress.com/wp-content/uploads/2025/10/gemini_generated_image_4bm25y4bm25y4bm2.png?w=1024</image:loc>
+      <image:title>The Psychology of Digital Trust: Why Customers Choose One Brand Over&amp;nbsp;Another</image:title>
+    </image:image>
+  </url>
+
+</urlset>

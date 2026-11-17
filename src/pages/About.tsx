@@ -1,0 +1,773 @@
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Users,
+  Settings,
+  Calendar,
+  ThumbsUp,
+  Headset,
+  Shield,
+  Globe,
+  Lightbulb,
+  CheckCircle,
+  Handshake,
+  Star,
+  Rocket,
+  TrendingUp,
+  Trophy,
+  Target,
+  ChevronLeft,
+  ChevronRight,
+  User,
+  Briefcase,
+  Quote,
+  BadgeCheck,
+  Server,
+  RefreshCw
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
+import AboutCTA from "@/components/AboutCTA";
+import { aboutSeoData } from "@/data/seo/aboutSeo";
+import cybaemLogoIcon from "@/assets/cybaem-logo-icon.png";
+
+/* ── Animation helpers ── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const SectionHeader = ({ subtitle, title, titleHighlight, align = "left" }: { subtitle: string, title: string, titleHighlight: string, align?: "left" | "center" }) => (
+  <div className={`mb-12 ${align === "center" ? "text-center" : ""}`}>
+    <span className="inline-block text-xs font-bold tracking-[0.15em] uppercase text-primary mb-3">
+      {subtitle}
+    </span>
+    <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+      {title} <span className="text-primary italic font-light">{titleHighlight}</span>
+    </h2>
+  </div>
+);
+
+/* ──────────────────── HERO ──────────────────── */
+const Hero = () => {
+  return (
+    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-background">
+      {/* Background Dots Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+          {/* Left Content */}
+          <motion.div variants={stagger} initial="hidden" animate="visible" className="max-w-xl">
+            <motion.span variants={fadeUp} className="inline-block text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-primary mb-6 bg-primary/5 px-3 py-1 rounded-full">
+              Leading Technology Solutions Provider
+            </motion.span>
+            <motion.h1 variants={fadeUp} className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-6">
+              Premium IT Service <br />
+              <span className="text-primary font-medium italic" style={{ fontFamily: "cursive" }}>zero compromise</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="hidden lg:block text-sm sm:text-base text-muted-foreground leading-relaxed mb-8 max-w-lg">
+              Delivering enterprise IT infrastructure, managed cloud services, and custom software engineering solutions for global enterprises.
+            </motion.p>
+            <motion.div variants={fadeUp} className="hidden lg:block">
+              <Link to="/#solutions" className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-primary/25">
+                Explore Our Capabilities<ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Image Layout */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Main Image Masked in a pill/oval shape */}
+            <div className="relative w-full drop-shadow-[0_15px_35px_rgba(0,0,0,0.25)]">
+              <img src="/images/about-team-1.webp" alt="Cybaem Tech Team" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Floating Element 1: Cybaemians */}
+            <div className="absolute top-8 -left-4 sm:-left-8 bg-white rounded-2xl p-3 sm:p-4 shadow-xl border border-border/50 hidden lg:flex items-center gap-3 animate-bounce-slow">
+              <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-primary">
+                <Users size={20} />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-foreground leading-tight">200+</p>
+                <p className="text-xs text-muted-foreground font-medium">Cybaemians</p>
+              </div>
+            </div>
+
+            {/* Floating Element 2: CT Logo */}
+            <div className="absolute top-1/4 right-2 sm:-right-6 flex flex-col items-center">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/40 shadow-2xl flex items-center justify-center">
+                <img src="/images/cybaem-logo.webp" alt="CT" className="w-12 h-12 sm:w-20 sm:h-20" />
+              </div>
+
+            </div>
+
+            {/* Floating Element 3: Rating */}
+            <div className="absolute bottom-8 -right-4 sm:-right-8 bg-white rounded-2xl p-3 sm:p-4 shadow-xl border border-border/50 hidden lg:flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">
+                <Star size={20} className="fill-orange-500" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-foreground leading-tight">4.8/5</p>
+                <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Employee Rating</p>
+              </div>
+            </div>
+
+            {/* Decorative background shapes */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50 rounded-full blur-3xl opacity-50" />
+          </motion.div>
+
+          {/* Mobile Description & Button */}
+          <div className="flex flex-col items-center mt-8 lg:hidden text-center px-2">
+            <motion.p variants={fadeUp} className="text-sm text-muted-foreground leading-relaxed mb-6">
+              Delivering enterprise IT infrastructure, managed cloud services, and custom software engineering solutions for global enterprises.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex justify-center w-full">
+              <Link to="/#solutions" className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold bg-primary text-primary-foreground rounded-full hover:opacity-90 transition-opacity shadow-lg shadow-primary/25">
+                Explore Our Capabilities <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ──────────────────── PILLARS ──────────────────── */
+const PillarsSection = () => {
+  const pillars = [
+    {
+      icon: Target,
+      title: "Our Mission",
+      desc: "We deliver project-focused IT solutions that drive real result - ptimized systems, stronger security, and seamless digital experiences that help you achieve business growth.",
+      footerIcon: TrendingUp,
+      footerText1: "Focused on",
+      footerText2: "Measurable Outcomes",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Our Values",
+      desc: "We operate with strict ISO standards, zero compromise on data security, and a culture of ethics and cutting edge technology that makes us a trusted partner for long-term success.",
+      footerIcon: Shield,
+      footerText1: "Built on Trust.",
+      footerText2: "Driven by Integrity.",
+    },
+    {
+      icon: RefreshCw,
+      title: "Our Approach",
+      desc: "A disciplined work process, total project visibility, and continuous improvement ensure we deliver with precisio - rom strategy to successful deployment.",
+      footerIcon: Users,
+      footerText1: "Process-led.",
+      footerText2: "Results Delivered.",
+    }
+  ];
+
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <section ref={ref} className="py-12 lg:py-16 bg-gray-50/30 relative z-10 overflow-hidden">
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+            What <span className="text-primary">Drives</span> Us
+          </h2>
+          <p className="text-muted-foreground text-sm md:text-base mb-4">
+            We combine purpose, principles, and process to deliver IT solutions that create real impact.
+          </p>
+          <div className="w-10 h-0.5 bg-primary mx-auto rounded-full"></div>
+        </div>
+
+        {/* Cards Grid */}
+        <div className="relative">
+          <motion.div variants={stagger} initial="hidden" animate={inView ? "visible" : "hidden"} className="grid md:grid-cols-3 gap-6 lg:gap-10">
+            {pillars.map((p, i) => (
+              <motion.div key={i} variants={fadeUp} className="relative group">
+
+                <div className="bg-white rounded-[2rem] p-6 lg:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col h-full hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] transition-all duration-300 relative z-10 text-center">
+
+                  {/* Top Icon */}
+                  <div className="w-16 h-16 mx-auto rounded-full bg-blue-50/50 border border-blue-100 flex items-center justify-center mb-5 transition-transform group-hover:scale-105 duration-300">
+                    <p.icon size={28} className="text-primary" strokeWidth={1.5} />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3">{p.title}</h3>
+                  <div className="w-6 h-[2px] bg-primary/40 mx-auto rounded-full mb-4"></div>
+
+                  {/* Description */}
+                  <p className="text-[13px] text-muted-foreground leading-relaxed flex-1 mb-6 px-1">
+                    {p.desc}
+                  </p>
+
+                  {/* Divider */}
+                  <div className="w-full h-px bg-gray-100 mb-4"></div>
+
+                  {/* Footer */}
+                  <div className="flex items-center text-left gap-4">
+                    <div className="text-primary shrink-0">
+                      <p.footerIcon size={28} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      {i === 0 && (
+                        <>
+                          <p className="text-[11px] font-semibold text-muted-foreground leading-tight">{p.footerText1}</p>
+                          <p className="text-sm font-bold text-primary leading-tight">{p.footerText2}</p>
+                        </>
+                      )}
+                      {i === 1 && (
+                        <>
+                          <p className="text-[11px] font-semibold text-muted-foreground leading-tight">Built on <span className="text-primary">Trust.</span></p>
+                          <p className="text-[11px] font-semibold text-muted-foreground leading-tight">Driven by <span className="text-primary">Integrity.</span></p>
+                        </>
+                      )}
+                      {i === 2 && (
+                        <>
+                          <p className="text-[11px] font-semibold text-muted-foreground leading-tight">{p.footerText1}</p>
+                          <p className="text-[11px] font-semibold text-muted-foreground leading-tight">Results <span className="text-primary">Delivered.</span></p>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* Connecting Arrow between cards (hidden on mobile and last item) */}
+                {i < pillars.length - 1 && (
+                  <div className="hidden md:flex absolute top-1/2 -right-3 lg:-right-5 w-8 h-8 lg:w-10 lg:h-10 bg-primary text-white rounded-full items-center justify-center z-20 shadow-lg -translate-y-1/2">
+                    <ArrowRight size={18} />
+                  </div>
+                )}
+
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+
+/* ──────────────────── CORE VALUES ──────────────────── */
+const CoreValuesSection = () => {
+  const values = [
+    { icon: Shield, title: "Security First", desc: "We prioritize security in every solution we deliver.", color: "text-blue-500", bg: "bg-blue-50" },
+    { icon: Globe, title: "Global Perspective", desc: "Bringing global expertise to local challenges.", color: "text-indigo-500", bg: "bg-indigo-50" },
+    { icon: Lightbulb, title: "Innovation", desc: "Embracing cutting-edge technology for business.", color: "text-green-500", bg: "bg-green-50" },
+    { icon: CheckCircle, title: "Reliability", desc: "Consistent, reliable solutions for business continuity.", color: "text-orange-500", bg: "bg-orange-50" },
+    { icon: Handshake, title: "Client Partnership", desc: "We build lasting partnerships with our clients.", color: "text-pink-500", bg: "bg-pink-50" },
+    { icon: Star, title: "Excellence", desc: "Delivering high-quality solutions that exceed expectations.", color: "text-teal-500", bg: "bg-teal-50" },
+  ];
+
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <section ref={ref} className="py-20 lg:py-28">
+      <div className="container mx-auto px-6 lg:px-12">
+        <SectionHeader subtitle="WHAT DRIVES US" title="Our Core" titleHighlight="Values." />
+
+        <motion.div variants={stagger} initial="hidden" animate={inView ? "visible" : "hidden"} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {values.map((v, i) => (
+            <motion.div key={i} variants={fadeUp} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center hover:-translate-y-1 transition-transform">
+              <div className={`w-14 h-14 mx-auto rounded-full ${v.bg} flex items-center justify-center mb-5`}>
+                <v.icon size={26} className={v.color} />
+              </div>
+              <h3 className="font-display text-sm font-bold text-foreground mb-2">{v.title}</h3>
+              <p className="text-[11px] text-muted-foreground leading-relaxed">{v.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+/* ──────────────────── TIMELINE ──────────────────── */
+const TimelineSection = () => {
+  const milestones = [
+    { year: "2020", title: "Foundation", desc: "Established with a vision to deliver innovative IT solutions and empower businesses.", icon: Rocket, color: "text-blue-500" },
+    { year: "2021", title: "Innovation Hub", desc: "Invested in emerging technologies and built strong capabilities.", icon: Lightbulb, color: "text-green-500" },
+    { year: "2022", title: "Strategic Partnerships", desc: "Formed key alliances to deliver greater value to clients.", icon: Handshake, color: "text-pink-500" },
+    { year: "2023", title: "Global Expansion", desc: "Expanded our footprint across multiple regions and industries.", icon: Globe, color: "text-indigo-500" },
+    { year: "2024", title: "Client-Centric Growth", desc: "Scaled operations while maintaining a strong client-first approach.", icon: TrendingUp, color: "text-purple-500" },
+    { year: "2025", title: "Excellence Achieved", desc: "Recognized for excellence in delivery, security & innovation.", icon: Trophy, color: "text-orange-500" },
+    { year: "2026", title: "Future Ready", desc: "Continuously innovating for a smarter, secure, and digital future.", icon: Target, color: "text-primary" },
+  ];
+
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <section ref={ref} className="py-20 bg-gray-50/50">
+      <div className="container mx-auto px-6 lg:px-12 text-center">
+        <SectionHeader subtitle="OUR JOURNEY" title="Milestones in" titleHighlight="Transforming Enterprise IT" align="center" />
+        <p className="text-muted-foreground text-sm max-w-xl mx-auto -mt-8 mb-16">
+          We're proud of the path we've forged in the world of enterprise IT.<br /> Here's a look at some of the key milestones in our journey:
+        </p>
+
+        <div className="relative">
+          {/* Background dashed track (Desktop) */}
+          <div className="hidden lg:block absolute top-10 left-[calc(100%/14)] right-[calc(100%/14)] h-[2px] border-t-2 border-dashed border-gray-200 z-0" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-8 relative z-10">
+            {milestones.map((m, i) => (
+              <div key={i} className="flex flex-col items-center relative">
+                {/* Connecting Animated Line (lg screens only) */}
+                {i < milestones.length - 1 && (
+                  <motion.div
+                    custom={i}
+                    variants={{
+                      hidden: { scaleX: 0 },
+                      visible: (idx: number) => ({
+                        scaleX: 1,
+                        transition: { delay: idx * 0.8 + 0.4, duration: 0.4, ease: "linear" }
+                      })
+                    }}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                    className="hidden lg:block absolute top-10 left-[50%] w-full h-[2px] bg-primary origin-left z-0"
+                  />
+                )}
+
+                {/* Circle Icon */}
+                <motion.div
+                  custom={i}
+                  variants={{
+                    hidden: { scale: 0, opacity: 0 },
+                    visible: (idx: number) => ({
+                      scale: 1,
+                      opacity: 1,
+                      transition: { delay: idx * 0.8, duration: 0.6, type: "spring", stiffness: 150 }
+                    })
+                  }}
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  className="w-20 h-20 shrink-0 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center mb-6 relative z-10"
+                >
+                  <m.icon size={32} className={m.color} strokeWidth={1.5} />
+                </motion.div>
+
+                {/* Text Content */}
+                <motion.div
+                  custom={i}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: (idx: number) => ({
+                      opacity: 1,
+                      y: 0,
+                      transition: { delay: idx * 0.8 + 0.3, duration: 0.5 }
+                    })
+                  }}
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  className="flex flex-col items-center"
+                >
+                  <h3 className="font-display font-bold text-primary mb-2 text-lg">{m.year}</h3>
+                  <h4 className="font-bold text-foreground text-sm mb-3">{m.title}</h4>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed px-2">{m.desc}</p>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ──────────────────── TESTIMONIALS ──────────────────── */
+const TestimonialsSection = () => {
+  const testimonials = [
+    {
+      id: 0,
+      quote: "CYBAEM transformed our IT operations with 24/7 support and robust security monitoring, helping us achieve higher uptime and stronger operational resilience.",
+      author: "CTO",
+      role: "Client",
+      companyName: "FinTech Company",
+      image: cybaemLogoIcon,
+      rating: 4.5,
+      verified: true,
+      tags: ["Managed IT", "Cyber Security", "Infrastructure", "24/7 Support"],
+      metrics: [
+        { label: "Project Duration", value: "18 Months", icon: Calendar },
+        { label: "Environment", value: "Windows Server, Azure, Microsoft 365", icon: Server },
+        { label: "Team Size", value: "12+ Experts", icon: Users }
+      ]
+    },
+    {
+      id: 1,
+      quote: "Their cloud team helped us migrate to Azure seamlessly, reducing infrastructure costs by 30% while improving application performance and scalability.",
+      author: "Head of IT",
+      role: "Client",
+      companyName: "Manufacturing Group",
+      image: cybaemLogoIcon,
+      rating: 4,
+      verified: true,
+      tags: ["Cloud Migration", "Azure", "DevOps", "Automation"],
+      metrics: [
+        { label: "Project Duration", value: "12 Months", icon: Calendar },
+        { label: "Environment", value: "Azure, Docker, Kubernetes", icon: Server },
+        { label: "Team Size", value: "15+ Experts", icon: Users }
+      ]
+    },
+    {
+      id: 2,
+      quote: "Digital campaigns delivered a 2× boost in qualified leads within just 90 days, significantly improving our online visibility and conversion rates.",
+      author: "Marketing Lead",
+      role: "Client",
+      companyName: "SaaS Startup",
+      image: cybaemLogoIcon,
+      rating: 4.5,
+      verified: true,
+      tags: ["Digital Marketing", "SEO", "Performance Marketing", "Analytics"],
+      metrics: [
+        { label: "Project Duration", value: "6 Months", icon: Calendar },
+        { label: "Environment", value: "Google Ads, Meta Ads, GA4", icon: Server },
+        { label: "Team Size", value: "8+ Experts", icon: Users }
+      ]
+    },
+    {
+      id: 3,
+      quote: "CYBAEM's software development team delivered a scalable enterprise application with modern architecture, accelerating our digital transformation and improving operational efficiency.",
+      author: "Engineering Manager",
+      role: "Client",
+      companyName: "Enterprise Software Company",
+      image: cybaemLogoIcon,
+      rating: 5,
+      verified: true,
+      tags: ["Software Development", "React", "Node.js", "Microservices"],
+      metrics: [
+        { label: "Project Duration", value: "14 Months", icon: Calendar },
+        { label: "Environment", value: "React, Node.js, AWS, PostgreSQL", icon: Server },
+        { label: "Team Size", value: "18+ Experts", icon: Users }
+      ]
+    }
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  return (
+    <section className="py-20 lg:py-28 bg-gray-50/50 overflow-hidden relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative text-center">
+        <SectionHeader subtitle="WHAT OUR CLIENTS SAY" title="Trusted by Leaders, Proven by" titleHighlight="Results." align="center" />
+        <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto -mt-8 mb-24">
+          Real stories from real partnerships that drive real impact.
+        </p>
+
+        <div className="relative max-w-6xl mx-auto flex items-center justify-center min-h-[420px]">
+
+          <button onClick={handlePrev} className="absolute left-0 z-20 w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 hidden md:flex items-center justify-center hover:bg-gray-50 transition-colors shrink-0 text-primary">
+            <ChevronLeft size={24} />
+          </button>
+
+          <div className="relative w-full h-[420px] flex justify-center items-center">
+            {testimonials.map((t, index) => {
+              const isActive = index === activeIndex;
+              const isPrev = index === (activeIndex - 1 + testimonials.length) % testimonials.length;
+              const isNext = index === (activeIndex + 1) % testimonials.length;
+
+              let position = "hidden";
+              let xOffset = 0;
+              let scale = 1;
+              let zIndex = 0;
+              let opacity = 0;
+
+              if (isActive) {
+                position = "active";
+                xOffset = 0;
+                scale = 1;
+                zIndex = 10;
+                opacity = 1;
+              } else if (isPrev) {
+                position = "prev";
+                xOffset = -60;
+                scale = 0.85;
+                zIndex = 5;
+                opacity = 0.4;
+              } else if (isNext) {
+                position = "next";
+                xOffset = 60;
+                scale = 0.85;
+                zIndex = 5;
+                opacity = 0.4;
+              }
+
+              if (position === "hidden") return null;
+
+              return (
+                <motion.div
+                  key={t.id}
+                  initial={false}
+                  animate={{
+                    x: `calc(-50% + ${xOffset}%)`,
+                    y: "-50%",
+                    scale: scale,
+                    opacity: opacity,
+                    zIndex: zIndex
+                  }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 w-full md:w-[80%] lg:w-[65%] bg-white rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 p-6 md:p-8 text-left"
+                >
+                  <div className="flex flex-col md:flex-row gap-8 relative">
+                    {/* Background Quote Mark */}
+                    <Quote size={100} className="absolute top-0 left-1/2 -translate-x-1/2 text-gray-50 z-0 pointer-events-none" fill="currentColor" strokeWidth={0} />
+
+                    {/* Left Column */}
+                    <div className="flex-1 relative z-10">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-primary rounded-full text-xs font-semibold mb-6">
+                        <BadgeCheck size={14} /> Verified Client
+                      </div>
+
+                      <div className="flex items-center gap-2 mb-6">
+                        <div className="flex text-yellow-400">
+                          {[...Array(Math.floor(t.rating))].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                          {t.rating % 1 !== 0 && <Star size={16} fill="currentColor" className="opacity-50" />}
+                        </div>
+                        <span className="text-sm font-bold text-foreground">{t.rating}/5</span>
+                      </div>
+
+                      <p className="text-base md:text-lg lg:text-xl font-medium text-foreground leading-relaxed mb-6 relative z-10">
+                        "{t.quote}"
+                      </p>
+
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+                        <div className="flex items-center gap-4">
+                          {/* Simplified placeholder for company logo / info */}
+                          <div className="flex items-center gap-2 shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                              {t.companyName[0]}
+                            </div>
+                            <div className="font-bold text-base text-slate-800 tracking-tight leading-none">
+                              {t.companyName}
+                            </div>
+                          </div>
+                          <div className="border-l border-gray-200 pl-4">
+                            <p className="font-bold text-foreground text-sm">{t.author}</p>
+                            <p className="text-xs text-muted-foreground">{t.role}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {t.tags.map(tag => (
+                          <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-[10px] font-semibold">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="w-full md:w-[220px] shrink-0 relative z-10 flex flex-col justify-between pt-4">
+                      <div className="hidden md:block relative h-[120px] w-[120px] mx-auto -mt-8 md:-mt-10 mb-6 rounded-full overflow-hidden shadow-lg shadow-primary/30 border border-gray-100 shrink-0 bg-white p-2">
+                        <img src={t.image} alt={t.author} className="w-full h-full object-contain opacity-80" />
+                      </div>
+
+                      <div className="space-y-5 pl-2">
+                        {t.metrics.map(m => (
+                          <div key={m.label} className="flex gap-4 items-start">
+                            <m.icon size={18} className="text-gray-400 mt-0.5 shrink-0" />
+                            <div>
+                              <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider mb-0.5">{m.label}</p>
+                              <p className="text-sm font-bold text-foreground leading-tight">{m.value}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <button onClick={handleNext} className="absolute right-0 z-20 w-12 h-12 rounded-full bg-white shadow-md border border-gray-100 hidden md:flex items-center justify-center hover:bg-gray-50 transition-colors shrink-0 text-primary">
+            <ChevronRight size={24} />
+          </button>
+        </div>
+
+        {/* Mobile controls */}
+        <div className="flex md:hidden justify-center items-center gap-4 mt-8">
+          <button onClick={handlePrev} className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-primary">
+            <ChevronLeft size={20} />
+          </button>
+          <button onClick={handleNext} className="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-primary">
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
+        <div className="flex justify-center gap-3 mt-8 mb-10">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${i === activeIndex ? 'bg-primary w-4' : 'bg-gray-300'}`}
+            />
+          ))}
+        </div>
+
+
+      </div>
+    </section>
+  );
+};
+
+/* ──────────────────── LEADERSHIP CTA ──────────────────── */
+const LeadershipCTASection = () => {
+  return (
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="bg-[#f8fafd] rounded-[2.5rem] p-8 lg:p-14 relative overflow-visible flex flex-col lg:flex-row items-center gap-12 lg:gap-8 border border-blue-50 shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
+
+          {/* Left Content */}
+          <div className="w-full lg:w-[55%] relative z-10">
+            {/* Tag */}
+            <div className="inline-block bg-white shadow-sm text-slate-400 text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase px-4 py-1.5 rounded-full mb-8">
+              <span className="text-blue-500">D R I V E N</span> &nbsp; B Y
+            </div>
+
+            {/* Headline */}
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#111827] mb-6">
+              Visionary <span className="text-[#3b82f6] italic font-serif tracking-wide">Leadership</span>
+            </h2>
+
+            {/* Description */}
+            <p className="text-slate-500 text-[15px] leading-relaxed mb-10 max-w-xl pr-4">
+              Meet the minds guiding our mission to deliver transformative IT solutions,
+              foster innovation, and build lasting partnerships across the globe.
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-3 gap-2 mb-10 max-w-lg divide-x divide-gray-200">
+              <div className="flex flex-col items-center text-center px-2">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-3">
+                  <Lightbulb size={18} />
+                </div>
+                <h4 className="text-[12px] font-bold text-gray-800 mb-1">Vision Led</h4>
+                <p className="text-[10px] text-gray-400 leading-tight">Ideas for a better tomorrow</p>
+              </div>
+              <div className="flex flex-col items-center text-center px-2">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-3">
+                  <Users size={18} />
+                </div>
+                <h4 className="text-[12px] font-bold text-gray-800 mb-1">People Focused</h4>
+                <p className="text-[10px] text-gray-400 leading-tight">Empowering teams</p>
+              </div>
+              <div className="flex flex-col items-center text-center px-2">
+                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 mb-3">
+                  <TrendingUp size={18} />
+                </div>
+                <h4 className="text-[12px] font-bold text-gray-800 mb-1">Impact Driven</h4>
+                <p className="text-[10px] text-gray-400 leading-tight">Creating lasting value</p>
+              </div>
+            </div>
+
+            {/* Button */}
+            <Link to="/leadership" className="inline-flex items-center gap-3 px-8 py-3.5 bg-[#1e40af] text-white text-[14px] font-medium rounded-full hover:bg-[#153084] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+              Meet Our Leadership
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          {/* Right Image Area */}
+          <div className="w-full lg:w-[45%] flex items-center justify-center lg:justify-end mt-10 lg:mt-0 relative z-10">
+            <div className="relative">
+              <img src="/images/meet-leaders.png" alt="Visionary Leadership" className="w-full h-auto object-contain max-w-[550px] drop-shadow-sm" />
+
+              {/* Floating Card 1 (Top Left) */}
+              <div className="absolute top-4 sm:top-10 -left-4 sm:-left-8 z-20 bg-white rounded-[1rem] p-3 sm:p-4 shadow-[0_15px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 animate-bounce-slow border border-gray-100">
+                <div className="w-10 h-10 rounded-full bg-[#f0f9ff] flex items-center justify-center text-[#3b82f6]">
+                  <Users size={18} strokeWidth={2.5} />
+                </div>
+                <div className="pr-2">
+                  <p className="text-[11px] font-bold text-slate-700 leading-tight">Experienced</p>
+                  <p className="text-[11px] font-bold text-slate-700 leading-tight">Leadership</p>
+                </div>
+              </div>
+
+              {/* Floating Card 2 (Bottom Right) */}
+              <div className="absolute bottom-6 sm:bottom-12 right-0 sm:-right-4 z-20 bg-white rounded-[1rem] p-3 sm:p-4 shadow-[0_15px_30px_rgba(0,0,0,0.06)] flex items-center gap-3 animate-bounce-slow border border-gray-100" style={{ animationDelay: '1.5s' }}>
+                <div className="w-10 h-10 rounded-full bg-[#f3e8ff] flex items-center justify-center text-[#8b5cf6]">
+                  <Target size={18} strokeWidth={2.5} />
+                </div>
+                <div className="pr-2">
+                  <p className="text-[11px] font-bold text-slate-700 leading-tight">Driving</p>
+                  <p className="text-[11px] font-bold text-slate-700 leading-tight">Real Impact</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ──────────────────── PAGE ──────────────────── */
+const About = () => {
+  return (
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-white">
+      <SEOHead
+        title={aboutSeoData.title}
+        description={aboutSeoData.description}
+        canonical={aboutSeoData.canonical}
+        keywords={aboutSeoData.keywords}
+        ogDescription={aboutSeoData.ogDescription}
+        twitterDescription={aboutSeoData.twitterDescription}
+        jsonLd={aboutSeoData.jsonLd}
+      />
+      <Navbar />
+      <main>
+        <Hero />
+        <PillarsSection />
+        <CoreValuesSection />
+        <TimelineSection />
+        <LeadershipCTASection />
+        <TestimonialsSection />
+        <AboutCTA />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default About;

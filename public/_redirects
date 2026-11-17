@@ -1,0 +1,54 @@
+https://cybaemtech.com/* https://www.cybaemtech.com/:splat 301!
+http://cybaemtech.com/* https://www.cybaemtech.com/:splat 301!
+http://www.cybaemtech.com/* https://www.cybaemtech.com/:splat 301!
+
+/blog/best-digital-marketing-strategy-for-pune-it-saas-companiescybaem-tech https://www.cybaemtech.com/blog/best-digital-marketing-strategy-for-pune-it-saas-companies-cybaem-tech 301!
+/blog/strengthening-digital-trust-why-cybersecurity-is-every-business-priority https://www.cybaemtech.com/blog/strengthening-digital-trust-why-cybersecurity-is-every-businesss-priority 301!
+
+/index.html / 301!
+/solutions / 301
+/solutions/managed-it /solutions/managed-it-cloud-security 301
+/solutions/digital-marketing /solutions/digital-revenue-growth 301
+/solutions/it-augmentation /solutions/it-staff-augmentation 301
+/solutions/it-infrastructure /solutions/it-infrastructure-services 301
+/approach /life-at-cybaemtech 301
+/career /careers 301
+/carrier /careers 301
+
+/resources 410!
+/resources/* 410!
+/blog/linkedin-post-* 410!
+/blog/how-pune-clinics-doctors-can-get-more-leads-with-digital-marketing 410!
+/blog/how-saas-startups-in-pune-can-scale-faster-with-seo-google-ads 410!
+/blog/how-saas-startups-in-pune-can-scale-faster-with-seo-googleads 410!
+/blog/the-role-of-content-marketing-in-building-a-strong-business-brand-online 410!
+/blog/the-role-of-content-marketing-in-building-a-strong-business-brandonline 410!
+/blog/business-technology-trends-in-2026-smarter-digital-solutions-for-growth 410!
+/blog/business-technology-trends-in-2026-smarter-digital-solutionsfor-growth 410!
+/blog/from-data-to-delight-how-ai-personalization-shapes-the-modern-customer-journey 410!
+/blog/real-estate-co-working-lead-generation-with-meta-and-google-ads-digital-marketing-company-in-pune 410!
+/blog/the-rise-of-ai-driven-personalization-crafting-experiences-that-convert 410!
+/blog/how-to-build-a-brand-from-the-ground-up-with-digital-marketing 410!
+/blog/why-authenticity-beats-algorithms-in-modern-marketing 410!
+/blog/brand-storytelling-that-actually-resonates-in-a-noisy-world 410!
+/ako/* 410!
+/rsmf8/* 410!
+/mml/* 410!
+/wp-content/* 410!
+
+/about /about/index.html 200
+/life-at-cybaemtech /life-at-cybaemtech/index.html 200
+/contact /contact/index.html 200
+/blog /blog/index.html 200
+/portfolio /portfolio/index.html 200
+/leadership /leadership/index.html 200
+/solutions/enterprise-software /solutions/enterprise-software/index.html 200
+/solutions/web-systems /solutions/web-systems/index.html 200
+/solutions/it-staff-augmentation /solutions/it-staff-augmentation/index.html 200
+/solutions/managed-it-cloud-security /solutions/managed-it-cloud-security/index.html 200
+/solutions/digital-revenue-growth /solutions/digital-revenue-growth/index.html 200
+/solutions/it-infrastructure-services /solutions/it-infrastructure-services/index.html 200
+/leadership/* /leadership/:splat/index.html 200
+/blog/* /blog/:splat/index.html 200
+/* /index.html 200
+

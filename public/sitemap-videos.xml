@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.cybaemtech.com/videos/foundation-day-celebration-2026</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.cybaemtech.com/video/thumbnails/foundation-day-celebration-2026.jpg</video:thumbnail_loc>
+      <video:title>Foundation Day Celebration 2026</video:title>
+      <video:description>Here are the highlights from Cybaem Tech&apos;s 6th Foundation Day Celebration! From the grand cake cutting and team speeches to gift exchanges and memorable group moments, see how the Cybaem Tech family celebrated six years of innovation, growth, and going Beyond Limits.</video:description>
+      <video:content_loc>https://cybaemtech.com/video/video.mp4</video:content_loc>
+      <video:player_loc>https://www.cybaemtech.com/videos/foundation-day-celebration-2026</video:player_loc>
+      <video:duration>40</video:duration>
+      <video:publication_date>2026-11-06</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.cybaemtech.com/videos/it-infrastructure-setup-for-smarter-business-connectivity</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.cybaemtech.com/video/thumbnails/it-infrastructure-setup-for-smarter-business-connectivity.jpg</video:thumbnail_loc>
+      <video:title>IT Infrastructure Setup for Smarter Business Connectivity</video:title>
+      <video:description>We build a reliable, high-performance IT foundation designed for seamless business operations and growth. From robust firewall security and high-speed networking to optimized servers, VLANs, enterprise Wi-Fi, and automated backup solutions, we cover everything needed to keep your organization connected and secure.</video:description>
+      <video:content_loc>https://cybaemtech.com/video/it-infrastructure-setup.mp4</video:content_loc>
+      <video:player_loc>https://www.cybaemtech.com/videos/it-infrastructure-setup-for-smarter-business-connectivity</video:player_loc>
+      <video:duration>47</video:duration>
+      <video:publication_date>2026-11-06</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+</urlset>

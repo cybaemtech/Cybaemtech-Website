@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login/
+
+Sitemap: https://www.cybaemtech.com/sitemap.xml
+Sitemap: https://www.cybaemtech.com/pagesSitemap.xml
+Sitemap: https://www.cybaemtech.com/imagesSitemap.xml
+Sitemap: https://www.cybaemtech.com/blogSitemap.xml
+Sitemap: https://www.cybaemtech.com/sitemap-images.xml
+Sitemap: https://www.cybaemtech.com/sitemap-videos.xml

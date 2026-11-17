@@ -1,0 +1,9 @@
+export { default as IndustryTechnologySolutions } from "./IndustryTechnologySolutions";
+export { default as EducationTechnologySolutions } from "./EducationTechnologySolutions";
+export { default as FinancialServicesTechnologySolutions } from "./FinancialServicesTechnologySolutions";
+export { default as HealthcareTechnologySolutions } from "./HealthcareTechnologySolutions";
+export { default as HospitalityTechnologySolutions } from "./HospitalityTechnologySolutions";
+export { default as ManufacturingTechnologySolutions } from "./ManufacturingTechnologySolutions";
+export { default as RealEstateTechnologySolutions } from "./RealEstateTechnologySolutions";
+export { default as RetailEcommerceTechnologySolutions } from "./RetailEcommerceTechnologySolutions";
+export { default as TransportationLogisticsTechnologySolutions } from "./TransportationLogisticsTechnologySolutions";
