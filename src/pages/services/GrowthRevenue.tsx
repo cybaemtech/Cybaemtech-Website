@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  ArrowDown,
   ChevronRight,
   ChevronLeft,
   CheckCircle2,
@@ -37,10 +38,83 @@ import { growthRevenueSeoData } from "@/data/seo/growthRevenueSeo";
 import { useConsultationModal } from "@/context/ConsultationModalContext";
 
 // Visual assets
+import heroGrowthBg from "@/assets/digital-growth-hero-bg.png";
 import digitalGrowthHeroImg from "@/assets/digital-growth-hero.png";
 import googleAdsImg from "@/assets/performance marketing/google-ads.png";
 import seoImg from "@/assets/performance marketing/SEO_AGO.png";
 import socialImg from "@/assets/performance marketing/Social-media-mng.png";
+
+/* ────────────────────────────────────────────────────────────
+   HERO ANIMATION VARIANTS (Matching CloudSecurity & HeroSection)
+   ──────────────────────────────────────────────────────────── */
+const heroContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+/* ────────────────────────────────────────────────────────────
+   HERO SERVICES STRIP DATA (Growth & Revenue)
+   ──────────────────────────────────────────────────────────── */
+const heroSlides = [
+  {
+    id: "performance-marketing",
+    label: "Performance Marketing",
+    href: "/digital-growth/performance-marketing",
+    isInternal: true,
+    icon: BarChart3,
+  },
+  {
+    id: "seo-aeo-geo",
+    label: "SEO, AEO & GEO",
+    href: "/digital-growth/seo-aeo-geo",
+    isInternal: true,
+    icon: Search,
+  },
+  {
+    id: "social-media-management",
+    label: "Social Media Management",
+    href: "/digital-growth/social-media-management",
+    isInternal: true,
+    icon: Share2,
+  },
+  {
+    id: "lead-generation",
+    label: "Lead Generation",
+    href: "#services",
+    isInternal: false,
+    icon: Target,
+  },
+  {
+    id: "conversion-optimization",
+    label: "Conversion Optimization",
+    href: "#services",
+    isInternal: false,
+    icon: TrendingUp,
+  },
+  {
+    id: "brand-content-strategy",
+    label: "Brand & Content Strategy",
+    href: "#services",
+    isInternal: false,
+    icon: Megaphone,
+  },
+  {
+    id: "analytics-insights",
+    label: "Analytics & ROI Tracking",
+    href: "#services",
+    isInternal: false,
+    icon: Zap,
+  },
+];
 
 /* ────────────────────────────────────────────────────────────
    PLATFORMS & TOOLS DATA
@@ -164,6 +238,16 @@ const marketingTools: ToolItem[] = [
    ──────────────────────────────────────────────────────────── */
 const GrowthRevenue = () => {
   const { openConsultationModal } = useConsultationModal();
+  const [isHeadingHovered, setIsHeadingHovered] = useState(false);
+
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById("services");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    }
+  };
 
   // Tool category filter state
   const [activeToolCategory, setActiveToolCategory] = useState<string>("All");
@@ -316,190 +400,120 @@ const GrowthRevenue = () => {
       <Navbar />
 
       {/* ────────────────────────────────────────────────────────────
-          BREADCRUMBS
+          SECTION 1: HERO (Matching CloudSecurity Layout & Spacing)
           ──────────────────────────────────────────────────────────── */}
-      <div className="bg-[#F8FAFD] border-b border-slate-100/80">
-        <div className="container mx-auto px-6 lg:px-12 py-3">
-          <nav className="flex items-center gap-2 text-xs font-medium text-slate-500">
-            <Link to="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <ChevronRight size={13} className="text-slate-400" />
-            <Link to="/digital-growth" className="hover:text-primary transition-colors">
-              Our Solutions
-            </Link>
-            <ChevronRight size={13} className="text-slate-400" />
-            <span className="text-primary font-semibold">Growth & Revenue</span>
-          </nav>
+      <section className="relative min-h-screen overflow-hidden flex flex-col justify-between items-center bg-slate-950 pt-28 sm:pt-32 lg:pt-36 pb-8 sm:pb-12">
+        {/* Background Image / Ambient Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={heroGrowthBg}
+            alt="Digital Growth & Performance Marketing"
+            className="w-full h-full object-cover object-center relative z-0"
+            loading="eager"
+          />
+
+          {/* Balanced overlay matching cloud-security that keeps the background clearly visible while ensuring text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-slate-950/85 pointer-events-none" />
+
+          {/* Decorative corner grid accents matching reference mockup */}
+          <div className="absolute top-0 left-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-35 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-35 pointer-events-none" />
         </div>
-      </div>
 
-      {/* ────────────────────────────────────────────────────────────
-          SECTION 1: HERO
-          ──────────────────────────────────────────────────────────── */}
-      <section className="relative pt-8 pb-14 lg:pt-16 lg:pb-20 overflow-hidden bg-gradient-to-b from-[#F4F8FD] via-[#F8FAFD] to-white">
-        {/* Soft atmospheric gradient glows */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -translate-y-1/3" />
-        <div className="absolute top-20 right-0 w-[420px] h-[420px] bg-sky-100/30 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 flex flex-col items-start">
-              {/* Eyebrow Pill */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35 }}
-                className="mb-4"
-              >
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-bold tracking-wider text-primary bg-blue-50/90 border border-blue-200/80 shadow-xs uppercase">
-                  <span>GROWTH & REVENUE</span>
-                  <ChevronRight size={13} className="text-primary" />
-                </div>
-              </motion.div>
-
-              {/* Headline */}
+        {/* ── TOP/CENTER HERO CONTENT ── */}
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10 w-full my-auto -translate-y-5 sm:-translate-y-8 lg:-translate-y-10">
+          <motion.div
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+            className="w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-col items-center justify-center text-center"
+          >
+            {/* Heading & Subheading (Always Visible Without Hover) */}
+            <div className="relative flex flex-col items-center justify-center text-center w-full max-w-5xl mx-auto">
+              {/* Main Heading */}
               <motion.h1
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.08 }}
-                className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[50px] xl:text-[54px] text-[#0A1435] leading-[1.12] tracking-tight mb-4"
+                variants={fadeUp}
+                className="font-extrabold text-white text-center drop-shadow-2xl tracking-[-0.03em] max-w-5xl mx-auto select-none"
+                style={{
+                  fontFamily:
+                    "'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif",
+                  lineHeight: 1.16,
+                  fontSize: "clamp(28px, 4.3vw, 52px)",
+                }}
               >
-                Turn Digital Presence into Real{" "}
-                <span className="text-primary">Business Growth</span>
+                <span className="block">Turn Digital Presence into </span>
+                <span className="block">Predictable Business Growth</span>
               </motion.h1>
 
-              {/* Subheadline */}
+              {/* Subheading - visible by default without hover */}
               <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                className="text-slate-600 text-base sm:text-[17px] leading-relaxed max-w-xl mb-7"
+                variants={fadeUp}
+                className="text-sm sm:text-base md:text-lg text-slate-100 max-w-4xl mx-auto text-center font-normal leading-relaxed drop-shadow mt-4 sm:mt-5 px-2"
               >
-                We help businesses attract, engage, and convert the right audience through performance
-                marketing, SEO, and social media strategies that deliver measurable results.
+                <span className="block">
+                  We help businesses attract, engage, and convert the right audience through performance
+                </span>
+                <span className="block">
+                  marketing, SEO, and social media strategies that deliver measurable results.
+                </span>
               </motion.p>
-
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.16 }}
-                className="flex flex-wrap items-center gap-3.5 mb-10 w-full sm:w-auto"
-              >
-                <button
-                  onClick={openConsultationModal}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0A1B39] hover:bg-primary text-white text-[14px] font-semibold transition-all shadow-md shadow-blue-950/20 hover:shadow-lg hover:-translate-y-0.5 group w-full sm:w-auto cursor-pointer"
-                >
-                  Get a Free Growth Audit
-                  <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-[14px] font-semibold transition-all border border-slate-200/90 hover:border-slate-300 shadow-xs w-full sm:w-auto cursor-pointer"
-                >
-                  Explore Our Services
-                </a>
-              </motion.div>
-
-              {/* 4 Hero Stats Bar */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.2 }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/80 w-full"
-              >
-                <div className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-[#0A1435] font-display">250+</span>
-                  <span className="text-xs text-slate-500 font-medium">Projects Delivered</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-primary font-display">3x</span>
-                  <span className="text-xs text-slate-500 font-medium">Average ROI</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-[#0A1435] font-display">98.9%</span>
-                  <span className="text-xs text-slate-500 font-medium">Client Satisfaction</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-[#0A1435] font-display">24/7</span>
-                  <span className="text-xs text-slate-500 font-medium">Expert Support</span>
-                </div>
-              </motion.div>
             </div>
+          </motion.div>
+        </div>
 
-            {/* Right Visual Mockup Column with Floating Badges */}
-            <div className="lg:col-span-6 relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="relative mx-auto max-w-[560px]"
-              >
-                {/* Visual Backdrop Frame */}
-                <div className="relative rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_20px_50px_rgba(10,27,57,0.12)] bg-gradient-to-tr from-slate-100 to-white">
-                  <img
-                    src={digitalGrowthHeroImg}
-                    alt="Turn Digital Presence into Business Growth with Cybaem Tech"
-                    className="w-full h-[380px] sm:h-[430px] object-cover object-center transform hover:scale-102 transition-transform duration-700"
-                    loading="eager"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1835]/30 via-transparent to-transparent pointer-events-none" />
-                </div>
+        {/* ── BOTTOM SERVICES MARQUEE FEATURE STRIP ── */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="w-full max-w-6xl mx-auto px-4 relative z-10 mt-auto pt-6"
+        >
+         
 
-                {/* Floating Badge 1: Top-Left (More Traffic & Customers) */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="absolute -top-4 -left-4 sm:-top-5 sm:-left-6 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 shadow-xl border border-slate-100 flex items-center gap-3 z-20"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
-                    <TrendingUp size={20} />
-                  </div>
-                  <div className="leading-tight">
-                    <p className="text-[13px] font-bold text-slate-900">More Traffic</p>
-                    <p className="text-[11px] text-slate-500 font-medium">More Customers</p>
-                  </div>
-                </motion.div>
+          <div className="relative overflow-hidden w-full py-3.5 group">
+            {/* Subtle edge fades matching cloud-security for smooth marquee entry and exit */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-l from-slate-950 via-slate-950/60 to-transparent z-10 pointer-events-none" />
 
-                {/* Floating Badge 2: Top-Right (Higher ROI & Lower Cost) */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="absolute -top-4 -right-4 sm:-top-5 sm:-right-6 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 sm:p-4 shadow-xl border border-slate-100 flex items-center gap-3 z-20"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
-                    <Target size={20} />
-                  </div>
-                  <div className="leading-tight">
-                    <p className="text-[13px] font-bold text-slate-900">Higher ROI</p>
-                    <p className="text-[11px] text-slate-500 font-medium">Lower Cost</p>
-                  </div>
-                </motion.div>
+            <div
+              className="flex w-max animate-marquee group-hover:[animation-play-state:paused] items-center"
+              style={{ animationDuration: "35s" }}
+            >
+              {[...heroSlides, ...heroSlides, ...heroSlides, ...heroSlides].map(
+                (item, idx) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <>
+                      <Icon
+                        size={20}
+                        className="text-white group-hover/item:text-sky-300 shrink-0 stroke-[2] transition-colors"
+                      />
+                      <span className="whitespace-nowrap">{item.label}</span>
+                    </>
+                  );
 
-                {/* Floating Badge 3: Bottom-Right (Grow Your Brand) */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  className="absolute -bottom-4 right-4 sm:-bottom-5 sm:right-6 bg-white/95 backdrop-blur-md rounded-2xl px-4 py-3 shadow-xl border border-slate-100 flex items-center gap-3 z-20"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center shrink-0 border border-violet-100">
-                    <Sparkles size={18} />
-                  </div>
-                  <div className="leading-tight">
-                    <p className="text-[13px] font-bold text-slate-900">Grow Your Brand</p>
-                    <p className="text-[11px] text-slate-500 font-medium">Omnichannel Reach</p>
-                  </div>
-                </motion.div>
-              </motion.div>
+                  return item.isInternal ? (
+                    <Link
+                      key={`${item.id}-${idx}`}
+                      to={item.href}
+                      className="flex items-center gap-2.5 px-5 sm:px-7 lg:px-8 py-1.5 shrink-0 text-white hover:text-sky-300 transition-colors duration-200 text-sm sm:text-base font-semibold group/item cursor-pointer"
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <a
+                      key={`${item.id}-${idx}`}
+                      href={item.href}
+                      className="flex items-center gap-2.5 px-5 sm:px-7 lg:px-8 py-1.5 shrink-0 text-white hover:text-sky-300 transition-colors duration-200 text-sm sm:text-base font-semibold group/item cursor-pointer"
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+              )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────

@@ -13,6 +13,7 @@ import { digitalMarketingSeoData } from "./src/data/seo/digitalMarketingSeo";
 import { enterpriseSoftwareSeoData } from "./src/data/seo/enterpriseSoftwareSeo";
 import { itInfrastructureServicesSeoData } from "./src/data/seo/itInfrastructureServicesSeo";
 import { leadershipSeoData } from "./src/data/seo/leadershipSeo";
+import { managedITContinuitySeoData } from "./src/data/seo/managedITContinuitySeo";
 
 interface RouteMeta {
   title: string;

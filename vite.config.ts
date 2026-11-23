@@ -22,6 +22,12 @@ import { cloudSecuritySeoData } from "./src/data/seo/cloudSecuritySeo";
 import { cloudSolutionsSeoData } from "./src/data/seo/cloudSolutionsSeo";
 import { cybersecuritySeoData } from "./src/data/seo/cybersecuritySeo";
 import { growthRevenueSeoData } from "./src/data/seo/growthRevenueSeo";
+import { managedITContinuitySeoData } from "./src/data/seo/managedITContinuitySeo";
+import { managedITPackageIncludedSeoData } from "./src/data/seo/managedITPackageIncludedSeo";
+import { managedITBenefitsSeoData } from "./src/data/seo/managedITBenefitsSeo";
+import { managedITPricingSeoData } from "./src/data/seo/managedITPricingSeo";
+import { managedITCostSeoData } from "./src/data/seo/managedITCostSeo";
+import { managedITCaseStudySeoData } from "./src/data/seo/managedITCaseStudySeo";
 
 const BASE_URL = "https://www.cybaemtech.com";
 
@@ -54,6 +60,12 @@ const routeMeta: Record<string, RouteMeta> = {
   "/cloud-security": cloudSecuritySeoData,
   "/digital-growth": growthRevenueSeoData,
   "/leadership": leadershipSeoData,
+  "/managed-it/managed-it-infrastructure-engineered-for-business-continuity": managedITContinuitySeoData,
+  "/managed-it/what-is-included-in-managed-it-infrastructure-package": managedITPackageIncludedSeoData,
+  "/managed-it/benefits-outsourcing-managed-it-infrastructure-services": managedITBenefitsSeoData,
+  "/managed-it/support-pricing-models-compared": managedITPricingSeoData,
+  "/managed-it/cost-mid-sized-company": managedITCostSeoData,
+  "/case-study/eliminating-downtime-risk-and-scaling-hybrid-cloud": managedITCaseStudySeoData,
   "/digital-growth/performance-marketing": {
     title: "Google Ads & Meta Ads Management | CybaemTech",
     description: "We manage Google Ads and Meta Ads built for quality leads, not empty clicks. Get more leads and sales from every rupee you spend.",
@@ -320,6 +332,12 @@ const routeToSeoFileName: Record<string, string> = {
   "/videos": "",
   "/videos/foundation-day-celebration-2026": "",
   "/videos/it-infrastructure-setup-for-smarter-business-connectivity": "",
+  "/managed-it/managed-it-infrastructure-engineered-for-business-continuity": "",
+  "/managed-it/what-is-included-in-managed-it-infrastructure-package": "",
+  "/managed-it/benefits-outsourcing-managed-it-infrastructure-services": "",
+  "/managed-it/support-pricing-models-compared": "",
+  "/managed-it/cost-mid-sized-company": "",
+  "/case-study/eliminating-downtime-risk-and-scaling-hybrid-cloud": "",
 };
 
 const routesToProcess = Object.keys(routeToSeoFileName);
@@ -343,6 +361,12 @@ const targetRouteToSourceLabel: Record<string, string> = {
   "/cloud-security": "src/data/seo/cloudSecuritySeo.ts",
   "/digital-growth": "src/data/seo/growthRevenueSeo.ts",
   "/leadership": "src/data/seo/leadershipSeo.ts",
+  "/managed-it/managed-it-infrastructure-engineered-for-business-continuity": "src/data/seo/managedITContinuitySeo.ts",
+  "/managed-it/what-is-included-in-managed-it-infrastructure-package": "src/data/seo/managedITPackageIncludedSeo.ts",
+  "/managed-it/benefits-outsourcing-managed-it-infrastructure-services": "src/data/seo/managedITBenefitsSeo.ts",
+  "/managed-it/support-pricing-models-compared": "src/data/seo/managedITPricingSeo.ts",
+  "/managed-it/cost-mid-sized-company": "src/data/seo/managedITCostSeo.ts",
+  "/case-study/eliminating-downtime-risk-and-scaling-hybrid-cloud": "src/data/seo/managedITCaseStudySeo.ts",
 };
 
 function escHtml(str: string) {

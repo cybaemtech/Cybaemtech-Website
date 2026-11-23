@@ -62,6 +62,12 @@ const PerformanceMarketing = lazy(() => import("./pages/services/PerformanceMark
 const SeoAeoGeo = lazy(() => import("./pages/services/SeoAeoGeo"));
 const SocialMediaManagement = lazy(() => import("./pages/services/SocialMediaManagement"));
 const ManagedIT = lazy(() => import("./pages/services/ManagedIT"));
+const ManagedITContinuity = lazy(() => import("./pages/ManagedITContinuity"));
+const ManagedITPackageIncluded = lazy(() => import("./pages/ManagedITPackageIncluded"));
+const ManagedITBenefits = lazy(() => import("./pages/ManagedITBenefits"));
+const ManagedITPricing = lazy(() => import("./pages/ManagedITPricing"));
+const ManagedITCost = lazy(() => import("./pages/ManagedITCost"));
+const ManagedITCaseStudy = lazy(() => import("./pages/ManagedITCaseStudy"));
 const ITInfrastructure = lazy(() => import("./pages/services/ITInfrastructure"));
 const EnterpriseSoftware = lazy(() => import("./pages/services/EnterpriseSoftware"));
 const SoftwareDevelopment = lazy(() => import("./pages/services/SoftwareDevelopment"));
@@ -191,6 +197,13 @@ const App = () => (
                 <Route path="/it-infrastructure" element={<Navigate to="/cloud-security/it-infrastructure-services" replace />} />
                 <Route path="/it-staff-augmentation" element={<Navigate to="/cloud-security/it-infrastructure-services" replace />} />
                 <Route path="/managed-it" element={<Navigate to="/cloud-security/it-infrastructure-services" replace />} />
+                <Route path="/managed-it/managed-it-infrastructure-engineered-for-business-continuity" element={<ManagedITContinuity />} />
+                <Route path="/managed-it/what-is-included-in-managed-it-infrastructure-package" element={<ManagedITPackageIncluded />} />
+                <Route path="/managed-it/what-is-included-in-managed it-infrastructure-package" element={<Navigate to="/managed-it/what-is-included-in-managed-it-infrastructure-package" replace />} />
+                <Route path="/managed-it/benefits-outsourcing-managed-it-infrastructure-services" element={<ManagedITBenefits />} />
+                <Route path="/managed-it/support-pricing-models-compared" element={<ManagedITPricing />} />
+                <Route path="/managed-it/cost-mid-sized-company" element={<ManagedITCost />} />
+                <Route path="/case-study/eliminating-downtime-risk-and-scaling-hybrid-cloud" element={<ManagedITCaseStudy />} />
                 <Route path="/managed-it-cloud-security" element={<Navigate to="/cloud-security" replace />} />
                 <Route path="/digital-marketing" element={<Navigate to="/digital-growth/performance-marketing" replace />} />
                 <Route path="/software-platforms" element={<SoftwareDevelopment />} />

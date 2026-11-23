@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  ArrowDown,
   ChevronRight,
   ChevronLeft,
   Check,
@@ -32,6 +33,9 @@ import {
   LifeBuoy,
   Sparkles,
   HeartPulse,
+  Laptop,
+  Server,
+  Cloud,
 } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
@@ -41,6 +45,7 @@ import { softwareDevelopmentSeoData } from "@/data/seo/softwareDevelopmentSeo";
 import { useConsultationModal } from "@/context/ConsultationModalContext";
 
 // Visual assets from Software & Platforms
+import heroPlatformsBg from "@/assets/software-platforms-hero-bg.jpg";
 import heroImg from "@/assets/services/Software & Platforms/hero-bg.png";
 import enterpriseSwImg from "@/assets/services/Software & Platforms/enterprices-sw-development.png";
 import mobileAppDevImg from "@/assets/services/Software & Platforms/Mobile-app-dev.png";
@@ -49,6 +54,78 @@ import retailMngPlatformImg from "@/assets/services/Software & Platforms/retail-
 import onDemandServiceAppImg from "@/assets/services/Software & Platforms/on-demand-service-app.png";
 import customBusinessPortalImg from "@/assets/services/Software & Platforms/custom-bisiness-portal.png";
 import ctaBgImg from "@/assets/services/Software & Platforms/CTA-bg.png";
+
+/* ────────────────────────────────────────────────────────────
+   HERO ANIMATION VARIANTS (Matching CloudSecurity & HeroSection)
+   ──────────────────────────────────────────────────────────── */
+const heroContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+/* ────────────────────────────────────────────────────────────
+   HERO SERVICES STRIP DATA (Software & Platforms)
+   ──────────────────────────────────────────────────────────── */
+const heroSlides = [
+  {
+    id: "enterprise-software",
+    label: "Enterprise Software",
+    href: "/software-platforms/enterprise-software",
+    isInternal: true,
+    icon: Laptop,
+  },
+  {
+    id: "mobile-apps",
+    label: "Mobile Apps",
+    href: "/software-platforms/mobile-app-development",
+    isInternal: true,
+    icon: Smartphone,
+  },
+  {
+    id: "web-systems",
+    label: "Web Systems",
+    href: "/software-platforms/web-systems",
+    isInternal: true,
+    icon: Globe,
+  },
+  {
+    id: "cloud-native",
+    label: "Cloud-Native Apps",
+    href: "/cloud-security/cloud-solutions",
+    isInternal: true,
+    icon: Cloud,
+  },
+  {
+    id: "saas-platforms",
+    label: "SaaS Platforms",
+    href: "#services",
+    isInternal: false,
+    icon: Layers,
+  },
+  {
+    id: "custom-apis",
+    label: "Custom APIs & Integration",
+    href: "#services",
+    isInternal: false,
+    icon: Code2,
+  },
+  {
+    id: "devops-modernization",
+    label: "DevOps & Modernization",
+    href: "#services",
+    isInternal: false,
+    icon: Server,
+  },
+];
 
 /* ────────────────────────────────────────────────────────────
    TECHNOLOGY STACK DATA (Authentic SVG Logos)
@@ -480,6 +557,15 @@ const testimonials = [
 const SoftwareDevelopment = () => {
   const { openConsultationModal } = useConsultationModal();
 
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById("services");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+    }
+  };
+
   // Technology tab state
   const [activeCategory, setActiveCategory] = useState("Frontend");
 
@@ -554,167 +640,134 @@ const SoftwareDevelopment = () => {
       <Navbar />
 
       {/* ────────────────────────────────────────────────────────────
-          BREADCRUMBS
+          SECTION 1: HERO (Matching CloudSecurity Layout & Spacing)
           ──────────────────────────────────────────────────────────── */}
-      <div className="bg-[#F8FAFD] border-b border-slate-100/80">
-        <div className="container mx-auto px-6 lg:px-12 py-3">
-          <nav className="flex items-center gap-2 text-xs font-medium text-slate-500">
-            <Link to="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <ChevronRight size={13} className="text-slate-400" />
-            <Link to="/software-platforms" className="hover:text-primary transition-colors">
-              Our Solutions
-            </Link>
-            <ChevronRight size={13} className="text-slate-400" />
-            <span className="text-primary font-semibold">Software & Platforms</span>
-          </nav>
+      <section className="relative min-h-screen overflow-hidden flex flex-col justify-between items-center bg-slate-950 pt-28 sm:pt-32 lg:pt-36 pb-8 sm:pb-12">
+        {/* Background Image / Ambient Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src={heroPlatformsBg}
+            alt="Custom Software & Platforms Development"
+            className="w-full h-full object-cover object-center relative z-0"
+            loading="eager"
+          />
+
+          {/* Balanced overlay that keeps the background clearly visible while ensuring text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-slate-950/85 pointer-events-none" />
+
+          {/* Decorative corner grid accents matching reference mockup */}
+          <div className="absolute top-0 left-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-35 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-35 pointer-events-none" />
         </div>
-      </div>
 
-      {/* ────────────────────────────────────────────────────────────
-          SECTION 1: HERO
-          ──────────────────────────────────────────────────────────── */}
-      <section className="relative pt-8 pb-14 lg:pt-16 lg:pb-20 overflow-hidden bg-gradient-to-b from-[#F4F8FD] via-[#F8FAFD] to-white">
-        {/* Soft atmospheric gradient accents */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -translate-y-1/3" />
-        <div className="absolute top-20 right-0 w-[420px] h-[420px] bg-sky-100/30 rounded-full blur-3xl pointer-events-none" />
+        {/* ── TOP/CENTER HERO CONTENT ── */}
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10 w-full my-auto">
+          <motion.div
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+            className="w-full max-w-5xl lg:max-w-6xl mx-auto flex flex-col items-center justify-center text-center"
+          >
+            {/* Main Heading */}
+            <motion.h1
+              variants={fadeUp}
+              className="font-extrabold text-white text-center drop-shadow-2xl tracking-[-0.03em] max-w-5xl mx-auto"
+              style={{
+                fontFamily:
+                  "'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif",
+                lineHeight: 1.16,
+                fontSize: "clamp(28px, 4.3vw, 52px)",
+              }}
+            >
+              <span className="block">Build Custom Software &amp; Platforms </span>
+              <span className="block">That Drive Business Growth</span>
+            </motion.h1>
 
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 flex flex-col items-start">
-              {/* Eyebrow Pill */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35 }}
-                className="mb-4"
+            {/* Subheading */}
+            <motion.p
+              variants={fadeUp}
+              className="text-sm sm:text-base md:text-lg text-slate-200/90 max-w-4xl mx-auto text-center font-normal leading-relaxed drop-shadow mt-5 sm:mt-6 mb-8 sm:mb-12 px-2 sm:px-4"
+            >
+              <span className="block">
+                We design, develop, and modernize custom software solutions and digital platforms
+              </span>
+              <span className="block">
+                that help you work smarter, scale faster, and stay ahead in a digital-first world.
+              </span>
+            </motion.p>
+
+            {/* Center Down Arrow Scroll Button */}
+            <motion.div variants={fadeUp} className="flex justify-center">
+              <button
+                type="button"
+                onClick={handleScrollDown}
+                aria-label="Scroll down to explore"
+                className="w-13 h-13 sm:w-14 sm:h-14 rounded-full border border-white/60 bg-white/5 hover:bg-white/15 hover:border-white text-white backdrop-blur-md flex items-center justify-center transition-all duration-300 shadow-xl cursor-pointer group hover:scale-105 active:scale-95"
               >
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-bold tracking-wider text-primary bg-blue-50/90 border border-blue-200/80 shadow-xs uppercase">
-                  <span>SOFTWARE & PLATFORMS</span>
-                  <ChevronRight size={13} className="text-primary" />
-                </div>
-              </motion.div>
+                <ArrowDown
+                  size={22}
+                  className="group-hover:translate-y-0.5 transition-transform"
+                />
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
 
-              {/* Headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.08 }}
-                className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] text-[#0A1435] leading-[1.12] tracking-tight mb-4"
-              >
-                Build Software <br />
-                That Drives Your <br />
-                <span className="text-primary">Business Forward</span>
-              </motion.h1>
+        {/* ── BOTTOM SERVICES MARQUEE FEATURE STRIP ── */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="w-full max-w-6xl mx-auto px-4 relative z-10 mt-auto pt-6"
+        >
+          <p className="text-sm sm:text-base text-slate-300 font-medium text-center tracking-wide mb-3.5 sm:mb-4">
+            Our enterprise services &amp; solutions cover:
+          </p>
 
-              {/* Subheadline */}
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.12 }}
-                className="text-slate-600 text-base sm:text-[17px] leading-relaxed max-w-xl mb-7"
-              >
-                We design, develop, and modernize custom software solutions that help you work
-                smarter, scale faster, and stay ahead in a digital-first world.
-              </motion.p>
+          <div className="relative overflow-hidden w-full py-3.5 group">
+            {/* Subtle edge fades for smooth marquee entry and exit */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-r from-slate-950 via-slate-950/60 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-16 bg-gradient-to-l from-slate-950 via-slate-950/60 to-transparent z-10 pointer-events-none" />
 
-              {/* Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.16 }}
-                className="flex flex-wrap items-center gap-3.5 mb-10 w-full sm:w-auto"
-              >
-                <button
-                  onClick={openConsultationModal}
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0A1B39] hover:bg-primary text-white text-[14px] font-semibold transition-all shadow-md shadow-blue-950/20 hover:shadow-lg hover:-translate-y-0.5 group w-full sm:w-auto cursor-pointer"
-                >
-                  Discuss Your Project
-                  <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
+            <div
+              className="flex w-max animate-marquee group-hover:[animation-play-state:paused] items-center"
+              style={{ animationDuration: "35s" }}
+            >
+              {[...heroSlides, ...heroSlides, ...heroSlides, ...heroSlides].map(
+                (item, idx) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <>
+                      <Icon
+                        size={20}
+                        className="text-white group-hover/item:text-sky-300 shrink-0 stroke-[2] transition-colors"
+                      />
+                      <span className="whitespace-nowrap">{item.label}</span>
+                    </>
+                  );
 
-                <a
-                  href="#case-studies"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white hover:bg-slate-50 text-slate-800 text-[14px] font-semibold transition-all border border-slate-200/90 hover:border-slate-300 shadow-xs w-full sm:w-auto cursor-pointer"
-                >
-                  View Our Work
-                  <ArrowRight size={15} className="text-slate-500" />
-                </a>
-              </motion.div>
-
-              {/* 4 Stats under hero buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.2 }}
-                className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200/70 w-full"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-primary shrink-0 shadow-xs">
-                    <Users size={20} />
-                  </div>
-                  <div>
-                    <div className="text-base sm:text-lg font-extrabold text-[#0A1435] leading-tight">250+</div>
-                    <div className="text-[11px] font-medium text-slate-500">Projects Delivered</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-primary shrink-0 shadow-xs">
-                    <ShieldCheck size={20} />
-                  </div>
-                  <div>
-                    <div className="text-base sm:text-lg font-extrabold text-[#0A1435] leading-tight">98.9%</div>
-                    <div className="text-[11px] font-medium text-slate-500">Client Satisfaction</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-primary shrink-0 shadow-xs">
-                    <Headphones size={20} />
-                  </div>
-                  <div>
-                    <div className="text-base sm:text-lg font-extrabold text-[#0A1435] leading-tight">24/7</div>
-                    <div className="text-[11px] font-medium text-slate-500">Support</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-primary shrink-0 shadow-xs">
-                    <Building2 size={20} />
-                  </div>
-                  <div>
-                    <div className="text-base sm:text-lg font-extrabold text-[#0A1435] leading-tight">14+</div>
-                    <div className="text-[11px] font-medium text-slate-500">Years of Expertise</div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right Hero Visual Column */}
-            <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.55, delay: 0.15 }}
-                className="relative max-w-[560px] w-full"
-              >
-                {/* Main Hero Photo */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-white">
-                  <img
-                    src={heroImg}
-                    alt="Cybaem Tech Software & Platforms Engineering"
-                    className="w-full h-auto object-cover max-h-[460px] sm:max-h-[520px]"
-                  />
-                  {/* Subtle inner shadow overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </motion.div>
+                  return item.isInternal ? (
+                    <Link
+                      key={`${item.id}-${idx}`}
+                      to={item.href}
+                      className="flex items-center gap-2.5 px-5 sm:px-7 lg:px-8 py-1.5 shrink-0 text-white hover:text-sky-300 transition-colors duration-200 text-sm sm:text-base font-semibold group/item cursor-pointer"
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <a
+                      key={`${item.id}-${idx}`}
+                      href={item.href}
+                      className="flex items-center gap-2.5 px-5 sm:px-7 lg:px-8 py-1.5 shrink-0 text-white hover:text-sky-300 transition-colors duration-200 text-sm sm:text-base font-semibold group/item cursor-pointer"
+                    >
+                      {content}
+                    </a>
+                  );
+                }
+              )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ────────────────────────────────────────────────────────────

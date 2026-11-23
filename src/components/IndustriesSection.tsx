@@ -1,24 +1,19 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  HeartPulse,
-  Cog,
+  ArrowLeft,
+  FileText,
   Building2,
+  Cog,
+  HeartPulse,
   Truck,
   Landmark,
   ShoppingCart,
   GraduationCap,
   Hotel,
-  Users,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
-import { itemVariants } from "@/lib/animations";
-
-// Background building texture matching top-right visual in reference
-import buildingCtImg from "@/assets/navbar/bilding-ct.png";
 
 // Industry showcase images
 import healthImg from "@/assets/Industries/healthcare/hero/hero.png";
@@ -115,11 +110,11 @@ export default function IndustriesSection() {
   const checkScrollState = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 15);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+      setCanScrollLeft(scrollLeft > 20);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 20);
 
       const card = scrollContainerRef.current.firstElementChild as HTMLElement;
-      const cardWidth = card ? card.clientWidth + 24 : 320;
+      const cardWidth = card ? card.clientWidth + 24 : 340;
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.min(Math.max(0, index), industryList.length - 1));
     }
@@ -155,233 +150,133 @@ export default function IndustriesSection() {
       });
     }
   };
+
   return (
-    <div className="w-full bg-[#f8fbff] py-16 lg:py-24 relative overflow-hidden border-t border-slate-200/60 font-sans">
-      {/* Top right glass building background element matching the theme mockup */}
-      <div className="absolute top-0 right-0 w-full sm:w-[60%] lg:w-[42%] h-80 lg:h-96 pointer-events-none overflow-hidden opacity-35 lg:opacity-45 z-0">
-        <img
-          src={buildingCtImg}
-          alt=""
-          className="w-full h-full object-cover object-left-top"
-          loading="lazy"
-        />
-        {/* Soft fading gradient overlays so the building blends seamlessly into the light background */}
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#f8fbff]/60 to-[#f8fbff]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8fbff]/40 to-[#f8fbff]" />
-      </div>
+    <section
+      id="industries"
+      className="relative py-16 sm:py-20 lg:py-22 bg-white overflow-hidden border-t border-b border-slate-100"
+    >
+      {/* Soft ambient background glow */}
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-blue-50/60 rounded-full blur-[140px] -translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[450px] h-[450px] bg-sky-50/50 rounded-full blur-[120px] translate-x-1/3 pointer-events-none" />
 
-      {/* Subtle world map / connection network vector overlay in the center header */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-[720px] h-64 pointer-events-none opacity-20 z-0 hidden md:block">
-        <svg viewBox="0 0 800 400" className="w-full h-full text-blue-500 fill-current">
-          <circle cx="120" cy="120" r="3" />
-          <circle cx="160" cy="140" r="2.5" />
-          <circle cx="210" cy="110" r="3.5" />
-          <circle cx="260" cy="160" r="2" />
-          <circle cx="310" cy="130" r="3" />
-          <circle cx="380" cy="90" r="4" />
-          <circle cx="430" cy="140" r="2.5" />
-          <circle cx="470" cy="110" r="3" />
-          <circle cx="520" cy="160" r="3.5" />
-          <circle cx="580" cy="120" r="2.5" />
-          <circle cx="640" cy="150" r="3" />
-          <path
-            d="M120,120 Q210,80 380,90 T640,150"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-            className="text-blue-400"
-          />
-          <path
-            d="M160,140 Q310,180 470,110 T580,120"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="0.75"
-            strokeDasharray="3 3"
-            className="text-blue-300"
-          />
-        </svg>
-      </div>
+      {/* Subtle corner grid accents */}
+      <div className="absolute top-0 left-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:18px_18px] opacity-25 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:18px_18px] opacity-25 pointer-events-none" />
 
-      <motion.div
-        variants={itemVariants}
-        className="w-full px-4 sm:px-6 lg:px-12 max-w-[1380px] mx-auto relative z-10"
-      >
-        {/* =========================================================================
-            HEADER: TITLE, SUBTITLE & TOP-RIGHT STATS + BUTTON
-            ========================================================================= */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-12 sm:mb-16">
-          {/* Left Column: Eyebrow, Title & Subtitle */}
+      <div className="container mx-auto px-5 sm:px-6 lg:px-12 relative z-10 max-w-7xl">
+        {/* ── SECTION HEADER: Left Title + Right Navigation Controls ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div className="max-w-2xl">
-            {/* Eyebrow tag */}
-            <div className="text-primary font-bold text-xs tracking-wider uppercase flex items-center gap-2 mb-3">
-              <span className="w-5 h-[2px] bg-primary inline-block" />
-              <span>INDUSTRIES WE SERVE</span>
+            <div className="flex items-center gap-2.5 mb-2.5">
+              <span className="w-5 h-[2px] bg-primary rounded-full" />
+              <span className="text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase text-primary">
+                INDUSTRIES WE SERVE
+              </span>
             </div>
-
-            {/* Main Title */}
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-slate-900 leading-[1.15] tracking-tight">
-              Specialized Technology for <br className="hidden sm:inline" />
-              <span className="text-primary">Key Industries</span>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-[40px] font-extrabold text-[#0a1435] tracking-tight leading-tight">
+              Specialized Technology for <span className="text-primary">Key Industries</span>
             </h2>
-
-            {/* Subtitle */}
-            <p className="text-sm sm:text-base text-slate-600 mt-3.5 leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base text-slate-600 mt-2.5 leading-relaxed max-w-xl">
               We design, build, and scale mission-critical digital systems tailored to the exact regulatory, operational, and customer demands of your sector.
             </p>
           </div>
 
-          {/* Right Column: 2 Stats Badges + Blue Action Button */}
-          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-start sm:items-center lg:items-start xl:items-center gap-6">
-            {/* Stats row */}
-            <div className="flex items-center gap-6 sm:gap-8">
-              {/* Stat 1: 10+ Industries Served */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sky-50 text-primary flex items-center justify-center shrink-0 border border-sky-100/80 shadow-xs">
-                  <Building2 size={19} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-extrabold text-slate-900 leading-none">
-                    10+
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium mt-1">
-                    Industries Served
-                  </span>
-                </div>
-              </div>
-
-              {/* Stat 2: 250+ Happy Clients */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sky-50 text-primary flex items-center justify-center shrink-0 border border-sky-100/80 shadow-xs">
-                  <Users size={19} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-extrabold text-slate-900 leading-none">
-                    250+
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium mt-1">
-                    Happy Clients
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Blue Pill Button: Explore All Industries → */}
-            <div className="flex items-center gap-3">
-              {/* Prev / Next Slider Controls (visible only on mobile/tablet slider) */}
-              <div className="flex lg:hidden items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => scroll("left")}
-                  disabled={!canScrollLeft}
-                  aria-label="Previous Industry"
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all ${
-                    canScrollLeft
-                      ? "bg-white text-slate-800 border border-slate-200/90 shadow-sm hover:bg-primary hover:text-white hover:border-primary active:scale-95 cursor-pointer"
-                      : "bg-slate-100 text-slate-300 border border-slate-200/50 cursor-not-allowed opacity-50"
-                  }`}
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scroll("right")}
-                  disabled={!canScrollRight}
-                  aria-label="Next Industry"
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all ${
-                    canScrollRight
-                      ? "bg-white text-slate-800 border border-slate-200/90 shadow-sm hover:bg-primary hover:text-white hover:border-primary active:scale-95 cursor-pointer"
-                      : "bg-slate-100 text-slate-300 border border-slate-200/50 cursor-not-allowed opacity-50"
-                  }`}
-                >
-                  <ChevronRight size={18} />
-                </button>
-              </div>
-
-              {/* Blue Pill Button: Explore All Industries → */}
-              <Link
-                to="/industries/real-estate-technology-solutions"
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-primary to-[#0066ff] hover:from-[#0047b3] hover:to-primary text-white font-bold text-xs sm:text-sm shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+          {/* Right Navigation Controls: Carousel Arrows + Explore Link */}
+          <div className="flex items-center gap-3 shrink-0 self-start md:self-end">
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scroll("left")}
+                disabled={!canScrollLeft}
+                aria-label="Previous Industry"
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                  canScrollLeft
+                    ? "border border-slate-200 hover:border-slate-400 text-slate-700 hover:text-slate-950 bg-white hover:bg-slate-50 shadow-xs active:scale-95 cursor-pointer"
+                    : "border border-slate-200/50 text-slate-300 bg-slate-50/50 cursor-not-allowed opacity-40"
+                }`}
               >
-                <span>Explore All Industries</span>
-                <ArrowRight size={15} />
-              </Link>
+                <ArrowLeft size={18} strokeWidth={1.8} />
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                disabled={!canScrollRight}
+                aria-label="Next Industry"
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                  canScrollRight
+                    ? "border border-slate-200 hover:border-slate-400 text-slate-700 hover:text-slate-950 bg-white hover:bg-slate-50 shadow-xs active:scale-95 cursor-pointer"
+                    : "border border-slate-200/50 text-slate-300 bg-slate-50/50 cursor-not-allowed opacity-40"
+                }`}
+              >
+                <ArrowRight size={18} strokeWidth={1.8} />
+              </button>
             </div>
+
+            <Link
+              to="/industries/real-estate-technology-solutions"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-200 hover:border-primary/50 bg-white hover:bg-blue-50/50 text-slate-800 hover:text-primary font-semibold text-xs sm:text-sm shadow-xs transition-all duration-200"
+            >
+              <span>All Industries</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
 
-        {/* =========================================================================
-            8 INDUSTRY CARDS: Desktop = 2 Lines of 4 Cards (Grid 4 cols)
-            Mobile = Horizontal Slider
-            ========================================================================= */}
-        <div className="relative">
-          <div
-            ref={scrollContainerRef}
-            className="flex lg:grid lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none scrollbar-none scroll-smooth pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0"
-          >
-          {industryList.map((ind) => (
-            <Link
+        {/* ── CAROUSEL OF INDUSTRY CARDS (3 FULL CARDS + 4TH HALF CARD, REDUCED HEIGHT, NO SCROLLER) ── */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x snap-mandatory scroll-smooth pb-3 pt-1 -mx-5 px-5 md:mx-0 md:px-0"
+        >
+          {industryList.map((ind, index) => (
+            <motion.div
               key={ind.number}
-              to={ind.link}
-              className="shrink-0 lg:shrink w-[84vw] max-w-[305px] sm:w-[320px] lg:w-auto lg:max-w-none snap-start group bg-white rounded-2xl overflow-hidden border border-slate-100/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_18px_45px_-5px_rgba(0,82,204,0.14)] hover:border-blue-200/80 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="w-[78vw] sm:w-[calc((100%-24px)/2.35)] lg:w-[calc((100%-72px)/3.45)] h-[370px] sm:h-[390px] lg:h-[400px] shrink-0 snap-start"
             >
-              {/* Card Top: Photo Container with Number Badge and Organic Wave Curve */}
-              <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100">
+              <Link
+                to={ind.link}
+                className="group relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden border border-slate-200/80 hover:border-primary/60 shadow-[0_8px_25px_rgba(15,23,42,0.12)] hover:shadow-[0_16px_35px_rgba(0,82,204,0.18)] transition-all duration-300 flex flex-col justify-end p-5 sm:p-6 cursor-pointer focus:outline-hidden block"
+              >
+                {/* 1. Full-Card Background Photo with Zoom on Hover */}
                 <img
                   src={ind.image}
                   alt={ind.title}
-                  className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out absolute inset-0"
                   loading="lazy"
                 />
 
-                {/* Number Badge (e.g. 01, 02, etc.) */}
-                <span className="absolute top-3 left-3 text-[11px] font-extrabold text-slate-700 bg-white/85 backdrop-blur-md px-2.5 py-0.5 rounded-full shadow-xs border border-white/70">
-                  {ind.number}
-                </span>
+                {/* 2. Deep Gradient Overlay strictly tailored for contrast & text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15 group-hover:from-black group-hover:via-black/65 transition-all duration-300 pointer-events-none" />
 
-                {/* Exact Organic Wavy SVG Curve matching the screenshot */}
-                <svg
-                  className="absolute -bottom-[1px] inset-x-0 w-full text-white fill-current pointer-events-none"
-                  viewBox="0 0 360 40"
-                  preserveAspectRatio="none"
-                  height="30"
-                >
-                  <path d="M0,18 C90,36 190,4 360,22 L360,40 L0,40 Z" />
-                </svg>
-              </div>
-
-              {/* Floating Circular Icon Badge positioned right on the left dip of the wave */}
-              <div className="relative -mt-6 ml-5 z-10 w-11 h-11 rounded-full bg-white shadow-md border border-slate-100/90 flex items-center justify-center text-primary group-hover:scale-110 group-hover:border-primary/30 transition-all duration-300">
-                <ind.icon size={19} strokeWidth={2.2} />
-              </div>
-
-              {/* Card Body */}
-              <div className="px-5 pb-5 pt-3 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-display text-lg font-extrabold text-slate-900 group-hover:text-primary transition-colors leading-snug">
+                {/* 3. Bottom Content: Title + Description + Hover-Revealed READ MORE */}
+                <div className="relative z-10 w-full">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white group-hover:text-blue-300 transition-colors leading-snug mb-1.5 drop-shadow-md">
                     {ind.title}
                   </h3>
-                  <p className="text-[12.5px] sm:text-[13px] text-slate-500 mt-2 leading-relaxed line-clamp-3">
+
+                  <p className="text-xs sm:text-[12.5px] text-slate-200/90 leading-relaxed line-clamp-2 font-normal drop-shadow">
                     {ind.desc}
                   </p>
-                </div>
 
-                <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-bold text-primary ">
-                    Explore Solutions
-                  </span>
-                  <div className="w-8 h-8 rounded-full bg-sky-50 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-xs">
-                    <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
+                  {/* READ MORE - Displayed ONLY on hover */}
+                  <div className="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 group-hover:max-h-12 group-hover:opacity-100 group-hover:mt-2.5">
+                    <div className="flex items-center gap-2 text-[11.5px] sm:text-xs font-bold tracking-wider uppercase text-white/90 group-hover:text-blue-300 pt-2 border-t border-white/20">
+                      <FileText size={13.5} strokeWidth={2} className="text-blue-400 shrink-0" />
+                      <span>READ MORE</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
 
-        {/* Slider Pagination Dots & Mobile Swipe Hint (mobile/tablet only) */}
-        <div className="flex lg:hidden items-center justify-between mt-4 px-1">
+        {/* ── Bottom Pagination Indicators ── */}
+        <div className="flex items-center justify-between mt-5 px-1">
           <div className="flex items-center gap-1.5">
             {industryList.map((ind, idx) => (
               <button
@@ -389,20 +284,20 @@ export default function IndustriesSection() {
                 type="button"
                 onClick={() => scrollToCard(idx)}
                 aria-label={`Go to ${ind.title}`}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === activeIndex
-                    ? "w-6 bg-primary"
-                    : "w-2 bg-slate-300 hover:bg-slate-400"
+                    ? "w-7 bg-primary"
+                    : "w-2 bg-slate-200 hover:bg-slate-300"
                 }`}
               />
             ))}
           </div>
-          <span className="text-[11px] text-slate-400 font-medium sm:hidden">
-            ← Swipe to explore →
+
+          <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">
+            Scroll or drag to explore all 8 industries →
           </span>
         </div>
       </div>
-      </motion.div>
-    </div>
+    </section>
   );
 }

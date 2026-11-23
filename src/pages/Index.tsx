@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import AboutUsSection from "@/components/AboutUsSection";
 import SEOHead from "@/components/SEOHead";
 import { homeSeoData } from "@/data/seo/homeSeo";
 import TrustAnchorSection from "@/components/TrustAnchorSection";
@@ -33,11 +34,12 @@ const Index = () => {
       />
       <Navbar />
       <HeroSection />
-      <TrustAnchorSection />
+      <AboutUsSection />
       <SolutionsSection />
       <WhyChooseUsSection />
       <DifferenceSection />
       <IndustriesSection />
+      <TrustAnchorSection />
       <GlobalReachSection />
       <OrbitSection />
       <ClientTestimonialsSection />

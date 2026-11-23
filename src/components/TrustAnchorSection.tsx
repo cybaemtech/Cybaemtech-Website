@@ -14,7 +14,7 @@ import partnerHp from "@/assets/partners/hp.svg";
 import partnerLenovo from "@/assets/partners/lenovo.svg";
 import partnerAzure from "@/assets/partners/azure.svg";
 import partnerFortinet from "@/assets/partners/fortinet.svg";
-import partnerSophos from "@/assets/partners/sophos.jpg";
+import partnerSophos from "@/assets/partners/sophos.png";
 import partnerTataTele from "@/assets/partners/tata-tele.png";
 import partnerEset from "@/assets/partners/eset.svg";
 import partnerRedington from "@/assets/partners/redington.png";
@@ -67,7 +67,7 @@ const PartnerLogo = ({ name, logo }: { name: string; logo: string | null }) => (
       <img
         src={logo}
         alt={name}
-        className="h-16 max-w-[120px] object-contain"
+        className="h-16 max-w-[120px] object-contain mix-blend-multiply"
         loading="lazy"
         width={120}
         height={64}
@@ -87,8 +87,8 @@ const ClientLogosMarquee = () => (
         # OUR PARTNERS
       </span>
     </div>
-    <div className="relative bg-white py-6 shadow-[0_0_35px_rgba(29,78,216,0.12)] border-y border-blue-50/50 overflow-hidden">
-      <div className="flex items-center gap-8 animate-marquee">
+    <div className="relative py-4 overflow-hidden">
+      <div className="flex items-center gap-8 animate-marquee hover:[animation-play-state:paused]">
         {[...partners, ...partners, ...partners].map((p, i) => (
           <PartnerLogo key={`${p.name}-${i}`} name={p.name} logo={p.logo} />
         ))}

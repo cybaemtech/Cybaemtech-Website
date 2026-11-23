@@ -326,37 +326,34 @@ const Navbar = () => {
   };
 
   const navItems = [
-    {label:"Home",href:"/",isRoute:true},
-    { label: "Our Solutions", href: "#solutions", hasMega: true },
-    { label: "Industries", href: "/industries", hasIndustriesDropdown: true },
-    // { label: "Portfolio", href: "/portfolio", isRoute: true },
+    { label: "Home", href: "/", isRoute: true },
     { label: "About Us", href: "/about", hasAboutDropdown: true },
+    { label: "Services", href: "#solutions", hasMega: true },
+    { label: "Industries", href: "/industries", hasIndustriesDropdown: true },
     { label: "Contact Us", href: "/contact", isRoute: true },
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-500 ${scrolled ? "border-b border-border/15" : ""}`}
+        className="fixed top-2 sm:top-3.5 left-0 right-0 z-50 px-3 sm:px-6 pointer-events-none transition-all duration-300"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="max-w-6xl mx-auto relative">
           <div
-            className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "py-3 sm:py-4" : "py-4 sm:py-6"}`}
+            className="w-full bg-white/95 backdrop-blur-md rounded-full shadow-[0_12px_40px_rgba(0,0,0,0.18)] border border-slate-200/90 px-5 sm:px-7 py-1.5 sm:py-2.5 flex items-center justify-between pointer-events-auto transition-all duration-300"
           >
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center shrink-0">
               <img
                 src={cybaemLogo}
                 alt="Cybaem Tech"
-                className="h-9 sm:h-11 w-auto"
-                width={180}
-                height={44}
+                className="h-[32px] sm:h-[38px] w-auto shrink-0 object-contain"
+                width={160}
+                height={38}
               />
             </Link>
 
-            {/* Right side: Desktop nav + Enquire button */}
-            <div className="flex items-center gap-6 lg:gap-8">
-              {/* Desktop nav */}
-              <div className="hidden md:flex items-center gap-6 lg:gap-7">
+            {/* Desktop nav links */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-3">
               {navItems.map((item) =>
                 item.hasMega ? (
                   <div
@@ -368,11 +365,11 @@ const Navbar = () => {
                   >
                     <button
                       ref={solutionsBtnRef}
-                      className={`text-base transition-all duration-200 flex items-center gap-1.5 ${solutionsOpen
-                        ? "text-primary font-semibold px-2 py-1.5"
+                      className={`text-sm lg:text-[15px] transition-all duration-200 flex items-center gap-1.5 rounded-full px-3 py-1 ${solutionsOpen
+                        ? "text-primary font-semibold bg-slate-100/80"
                         : isSolutionsActive
-                          ? "text-primary font-semibold px-2 py-1.5"
-                          : "text-muted-foreground hover:text-primary font-medium px-2 py-1.5"
+                          ? "text-primary font-semibold"
+                          : "text-slate-700 hover:text-primary font-medium"
                         }`}
                     >
                       {item.label}
@@ -397,12 +394,11 @@ const Navbar = () => {
                     <AnimatePresence>
                       {solutionsOpen && (
                         <div
-                          className={`absolute left-1/2 -translate-x-1/2 z-50 pointer-events-auto ${scrolled ? "top-[calc(100%-8px)] pt-2" : "top-[calc(100%-16px)] pt-2"
-                            }`}
+                          className="absolute top-[calc(100%+14px)] left-1/2 -translate-x-1/2 z-50 pointer-events-auto"
                         >
                           {/* Caret pointing towards Our Solutions button */}
                           <div
-                            className="absolute top-0.5 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]"
+                            className="absolute -top-[7px] w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]"
                             style={
                               caretLeft !== null
                                 ? { left: `${caretLeft}px`, transform: "translateX(-50%) rotate(45deg)" }
@@ -574,11 +570,11 @@ const Navbar = () => {
                     onMouseLeave={handleAboutLeave}
                   >
                     <button
-                      className={`text-base transition-all duration-200 flex items-center gap-1.5 ${aboutOpen
-                        ? "text-primary font-semibold px-2 py-1.5"
+                      className={`text-sm lg:text-[15px] transition-all duration-200 flex items-center gap-1.5 rounded-full px-3 py-1 ${aboutOpen
+                        ? "text-primary font-semibold bg-slate-100/80"
                         : isAboutActive
-                          ? "text-primary font-semibold px-2 py-1.5"
-                          : "text-muted-foreground hover:text-primary font-medium px-2 py-1.5"
+                          ? "text-primary font-semibold"
+                          : "text-slate-700 hover:text-primary font-medium"
                         }`}
                     >
                       {item.label}
@@ -602,9 +598,9 @@ const Navbar = () => {
 
                     <AnimatePresence>
                       {aboutOpen && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50 pointer-events-auto">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-[29px] z-50 pointer-events-auto">
                           {/* Caret pointing towards About Us button */}
-                          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]" />
+                          <div className="absolute top-[22px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]" />
 
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.98 }}
@@ -660,11 +656,11 @@ const Navbar = () => {
                     onMouseLeave={handleIndustriesLeave}
                   >
                     <button
-                      className={`text-base transition-all duration-200 flex items-center gap-1.5 ${industriesOpen
-                        ? "text-primary font-semibold px-2 py-1.5"
+                      className={`text-sm lg:text-[15px] transition-all duration-200 flex items-center gap-1.5 rounded-full px-3 py-1 ${industriesOpen
+                        ? "text-primary font-semibold bg-slate-100/80"
                         : isIndustriesActive
-                          ? "text-primary font-semibold px-2 py-1.5"
-                          : "text-muted-foreground hover:text-primary font-medium px-2 py-1.5"
+                          ? "text-primary font-semibold"
+                          : "text-slate-700 hover:text-primary font-medium"
                         }`}
                     >
                       {item.label}
@@ -688,9 +684,9 @@ const Navbar = () => {
 
                     <AnimatePresence>
                       {industriesOpen && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50 pointer-events-auto">
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-[29px] z-50 pointer-events-auto">
                           {/* Caret pointing towards Industries button */}
-                          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]" />
+                          <div className="absolute top-[22px] left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white rotate-45 border-t border-l border-slate-200/80 z-20 shadow-[-2px_-2px_4px_rgba(0,0,0,0.03)]" />
 
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.98 }}
@@ -765,10 +761,10 @@ const Navbar = () => {
                     to={item.href}
                     end={item.href === "/"}
                     className={({ isActive }) =>
-                      `text-base font-medium px-2 py-1.5 transition-colors duration-200 ${
+                      `text-sm lg:text-[15px] font-medium px-3 py-1 rounded-full transition-colors duration-200 ${
                         isActive
-                          ? "text-primary font-semibold"
-                          : "text-muted-foreground hover:text-primary"
+                          ? "text-primary font-bold"
+                          : "text-slate-700 hover:text-primary"
                       }`
                     }
                   >
@@ -778,7 +774,7 @@ const Navbar = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="text-base font-medium px-2 py-1.5 text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="text-sm lg:text-[15px] font-medium px-3 py-1 text-slate-700 hover:text-primary transition-colors duration-200"
                   >
                     {item.label}
                   </a>
@@ -786,17 +782,15 @@ const Navbar = () => {
               )}
             </div>
 
-            <div className="flex items-center gap-3">
-              <MagneticButton>
-                <button
-                  type="button"
-                  onClick={openConsultationModal}
-                  className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-primary text-white rounded-xl hover:bg-primary transition-colors cursor-pointer shadow-sm"
-                >
-                  <span>Enquire Now</span>
-                  <ArrowRight size={15} />
-                </button>
-              </MagneticButton>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={openConsultationModal}
+                className="hidden md:inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold bg-primary hover:bg-primary text-white rounded-full transition-colors cursor-pointer shadow-sm"
+              >
+                <span>Get in Touch</span>
+                <ArrowRight size={14} />
+              </button>
               <AnimatedHamburger
                 isOpen={mobileOpen}
                 toggle={() => setMobileOpen(!mobileOpen)}
@@ -804,8 +798,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
