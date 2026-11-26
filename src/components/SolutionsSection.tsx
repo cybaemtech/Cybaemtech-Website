@@ -406,7 +406,7 @@ const SolutionsSection = () => {
     <section
       ref={sectionRef}
       id="solutions"
-      className="relative min-h-screen py-16 sm:py-20 lg:py-24 bg-white overflow-hidden border-t border-b border-slate-100 flex flex-col justify-center"
+      className="relative lg:min-h-screen pt-6 pb-12 sm:pt-10 sm:pb-16 lg:py-24 bg-white overflow-hidden border-t border-b border-slate-100 flex flex-col justify-start lg:justify-center"
     >
       {/* ── BACKGROUND: Clean White with subtle enterprise dots and ambient blue glow ── */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
@@ -418,7 +418,7 @@ const SolutionsSection = () => {
         {/* ── SECTION HEADER: Centered Title & Subtitle + Nav Arrows on Right ── */}
         <div
           ref={headerRef}
-          className="relative flex flex-col items-center justify-center text-center mb-8 sm:mb-10 lg:mb-12 will-change-[opacity,transform]"
+          className="relative flex flex-col items-center justify-center text-center mb-6 sm:mb-8 lg:mb-12 will-change-[opacity,transform]"
         >
           <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto">
             <h2
@@ -435,10 +435,10 @@ const SolutionsSection = () => {
             </p>
           </div>
 
-          {/* Minimal Navigation Arrows matching the clean light theme */}
+          {/* Minimal Navigation Arrows matching the clean light theme (Desktop only) */}
           <div
             ref={headerArrowsRef}
-            className="hidden sm:flex absolute right-0 bottom-1 items-center gap-2.5"
+            className="hidden lg:flex absolute right-0 bottom-1 items-center gap-2.5"
           >
             <button
               onClick={() => handleScroll("left")}
@@ -492,18 +492,18 @@ const SolutionsSection = () => {
           >
             <div
               ref={scrollContainerRef}
-              className="flex overflow-x-auto lg:overflow-visible scrollbar-none snap-x snap-mandatory -mx-5 px-5 lg:mx-0 lg:px-0"
+              className="w-full"
             >
               <div
                 ref={cardsGridRef}
-                className="flex lg:grid lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 items-start w-full relative"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8 items-start w-full relative"
                 style={{ perspective: 1200 }}
               >
                 {servicesData.map((service, index) => (
                   <div
                     key={service.id}
                     ref={(el) => (cardRefs.current[index] = el)}
-                    className="w-[85vw] sm:w-[360px] lg:w-auto shrink-0 lg:shrink snap-start will-change-transform"
+                    className="w-full will-change-transform"
                     style={{ transformStyle: "preserve-3d" }}
                   >
                     <Link

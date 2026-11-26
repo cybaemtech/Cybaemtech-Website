@@ -1,11 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 import {
   Rocket,
   GraduationCap,
@@ -122,112 +116,9 @@ const Careers = () => {
   const [isDragging, setIsDragging] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const imageWrapperRef = useRef<HTMLDivElement>(null);
-  const leftContentRef = useRef<HTMLDivElement>(null);
-  const targetPlaceholderRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const contentInView = useInView(contentRef, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add(
-      {
-        isDesktop: "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
-        isMobileOrReduced: "(max-width: 1023px), (prefers-reduced-motion: reduce)",
-      },
-      (context) => {
-        const { isDesktop } = context.conditions as {
-          isDesktop: boolean;
-          isMobileOrReduced: boolean;
-        };
-
-        if (
-          isDesktop &&
-          sectionRef.current &&
-          imageWrapperRef.current &&
-          leftContentRef.current &&
-          targetPlaceholderRef.current
-        ) {
-          const section = sectionRef.current;
-          const imageWrapper = imageWrapperRef.current;
-          const leftContent = leftContentRef.current;
-          const targetPlaceholder = targetPlaceholderRef.current;
-
-          const getTargetBounds = () => {
-            const sRect = section.getBoundingClientRect();
-            const tRect = targetPlaceholder.getBoundingClientRect();
-            return {
-              top: Math.round(tRect.top - sRect.top),
-              right: Math.round(Math.max(0, sRect.right - tRect.right)),
-              width: Math.round(tRect.width),
-              height: Math.round(tRect.height),
-            };
-          };
-
-          // Initial state: full-width, full-height image covering section, no text visible
-          gsap.set(leftContent, { opacity: 0, x: -40 });
-          gsap.set(imageWrapper, {
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: 0,
-            boxShadow: "none",
-          });
-
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: "top top",
-              end: "+=120%",
-              pin: true,
-              pinSpacing: true,
-              scrub: 1.5,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          // Shrink image towards the right while revealing left content simultaneously
-          tl.to(
-            imageWrapper,
-            {
-              top: () => getTargetBounds().top,
-              right: () => getTargetBounds().right,
-              width: () => getTargetBounds().width,
-              height: () => getTargetBounds().height,
-              borderRadius: 24,
-              boxShadow:
-                "0 25px 60px -15px rgba(0, 82, 204, 0.18), 0 12px 25px -8px rgba(10, 27, 57, 0.12)",
-              ease: "power2.out",
-              duration: 1,
-            },
-            0
-          ).to(
-            leftContent,
-            {
-              opacity: 1,
-              x: 0,
-              ease: "power2.out",
-              duration: 0.85,
-            },
-            0.15
-          );
-        } else if (leftContentRef.current) {
-          // Mobile or reduced motion: make content immediately visible without pinning
-          gsap.set(leftContentRef.current, { opacity: 1, x: 0 });
-        }
-      }
-    );
-
-    return () => mm.revert();
-  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -428,11 +319,10 @@ const Careers = () => {
       <Navbar />
 
       {/* ══════════════════════════════════════════════════
-          ACCENTURE-INSPIRED SCROLL-PINNED HERO SECTION
+          HERO SECTION
       ══════════════════════════════════════════════════ */}
       <section
-        ref={sectionRef}
-        className="relative w-full min-h-screen lg:h-screen overflow-hidden bg-gradient-to-b from-[#f3f7fd] via-[#f8faff] to-[#ffffff] border-b border-slate-100 flex items-center pt-28 pb-16 lg:py-0"
+        className="relative w-full overflow-hidden bg-gradient-to-b from-[#f3f7fd] via-[#f8faff] to-[#ffffff] border-b border-slate-100 flex items-center pt-28 pb-14 lg:pt-36 lg:pb-20"
       >
         {/* Soft Background Glow Effects */}
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
@@ -442,13 +332,10 @@ const Careers = () => {
         <div className="absolute top-0 left-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-25 pointer-events-none" />
         <div className="absolute top-0 right-0 w-36 sm:w-56 h-36 sm:h-56 bg-[radial-gradient(#475569_1.2px,transparent_1.2px)] [background-size:18px_18px] opacity-25 pointer-events-none" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-7xl h-full flex items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10 max-w-7xl">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
             {/* Left Column (55%): Headline & Value Highlights */}
-            <div
-              ref={leftContentRef}
-              className="lg:col-span-7 flex flex-col justify-center"
-            >
+            <div className="lg:col-span-7 flex flex-col justify-center">
               {/* Category Pill Tag with Accent Line */}
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[12px] sm:text-[13px] font-bold tracking-[0.14em] text-primary uppercase">
@@ -516,44 +403,16 @@ const Careers = () => {
               </div>
             </div>
 
-            {/* Right Column Target Anchor (45%) */}
-            <div
-              ref={targetPlaceholderRef}
-              className="lg:col-span-5 relative w-full aspect-[16/10.5] max-h-[380px] my-auto"
-            >
-              {/* Fallback image display for mobile devices */}
-              <div className="lg:hidden w-full h-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/80">
-                <img
-                  src="/images/careers-hero.jpg"
-                  alt="Cybaem Tech Careers - Team Collaboration"
-                  className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-              </div>
+            {/* Right Column (45%): Hero Image */}
+            <div className="lg:col-span-5 relative w-full aspect-[16/10.5] max-h-[400px] my-auto rounded-2xl overflow-hidden shadow-xl border border-slate-200/80">
+              <img
+                src="/images/careers-hero.jpg"
+                alt="Cybaem Tech Careers - Team Collaboration"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
-        </div>
-
-        {/* Desktop Pinned Full-Screen Animated Image Layer */}
-        <div
-          ref={imageWrapperRef}
-          className="hidden lg:block absolute z-20 overflow-hidden shadow-2xl border border-slate-200/60"
-          style={{
-            top: 0,
-            right: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: "0px",
-          }}
-        >
-          <img
-            src="/images/careers-hero.jpg"
-            alt="Cybaem Tech Careers - Team Collaboration"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-          />
-          {/* Subtle gradient vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
         </div>
       </section>
 
@@ -1055,7 +914,7 @@ const Careers = () => {
                         <div className="w-7 h-7 rounded-lg bg-blue-100 text-primary flex items-center justify-center shrink-0">
                           <Phone size={14} />
                         </div>
-                        <span>+91 85301 71515</span>
+                        <span>+91 8600170900</span>
                       </a>
                     </div>
                   </div>

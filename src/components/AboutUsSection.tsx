@@ -12,7 +12,7 @@ import aboutUsTeamImg from "@/assets/about-us-team.jpg";
 
 export default function AboutUsSection() {
   return (
-    <section id="about-us" className="relative py-16 sm:py-20 lg:py-24 bg-white overflow-hidden border-b border-slate-100">
+    <section id="about-us" className="relative pt-12 pb-10 sm:py-20 lg:py-24 bg-white overflow-hidden border-b border-slate-100">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
 

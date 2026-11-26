@@ -113,19 +113,19 @@ const galleryImages = [
 const Hero = () => {
   const { openConsultationModal } = useConsultationModal();
   return (
-    <section className="relative pt-12 pb-8 lg:pt-16 lg:pb-12 overflow-hidden bg-background">
+    <section className="relative pt-24 sm:pt-28 lg:pt-16 pb-8 lg:pb-12 overflow-hidden bg-background">
       {/* Background Dots Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-8 items-center mb-4 lg:mb-6">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-5 lg:gap-8 items-center mb-4 lg:mb-6">
 
           {/* Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl"
+            className="max-w-2xl order-2 lg:order-1"
           >
             {/* Badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100/60 border border-blue-200/50 mb-6">
@@ -137,8 +137,8 @@ const Hero = () => {
 
             {/* Title */}
             <motion.h1 variants={itemVariants} className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[68px] font-extrabold leading-[1.05] text-[#0a1930] tracking-tight mb-6">
-              Custom Web Systems &<br />
-              <span className="text-primary italic font-serif tracking-normal pr-4">Application Development</span>
+              Custom Web Systems &  
+              <span className="text-primary italic font-serif tracking-normal pr-4"> Application Development</span>
             </motion.h1>
 
             {/* Description */}
@@ -177,7 +177,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95, x: 20 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 60, damping: 20, delay: 0.2 }}
-            className="relative w-full h-full flex justify-center lg:justify-end items-center"
+            className="relative w-full h-full flex justify-center lg:justify-end items-center order-1 lg:order-2"
           >
             {/* Main Hero Image */}
             <div className="relative w-full lg:w-[120%] max-w-[950px] aspect-[4/3] sm:aspect-auto sm:h-[500px] lg:h-[750px] z-20 flex items-center justify-center">

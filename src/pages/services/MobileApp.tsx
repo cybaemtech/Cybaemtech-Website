@@ -695,13 +695,13 @@ const MobileApp = () => {
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.15 }}
-                className="relative w-full lg:w-[128%] xl:w-[136%] shrink-0 flex items-center justify-center lg:justify-end lg:-mr-8 xl:-mr-14"
+                className="relative w-full shrink-0 flex items-center justify-center lg:justify-end"
               >
-                <div className="w-full flex items-center justify-center -translate-x-[7.5%] sm:-translate-x-[4%] lg:translate-x-0 my-3 lg:my-0">
+                <div className="w-full flex items-center justify-center my-2 sm:my-0">
                   <img
                     src={mobileHeaderImg}
                     alt="Mobile App Development - iOS, Android & Cross-Platform Applications"
-                    className="w-[125%] xs:w-[130%] sm:w-[115%] lg:w-full h-auto max-h-[580px] xs:max-h-[640px] sm:max-h-[700px] lg:max-h-[850px] xl:max-h-[950px] object-contain drop-shadow-[0_30px_60px_rgba(37,99,235,0.2)] transition-transform duration-500 hover:scale-[1.03] scale-140 xs:scale-145 sm:scale-120 lg:scale-115 xl:scale-120 origin-center lg:origin-right"
+                    className="w-full h-auto max-h-[480px] sm:max-h-[520px] lg:max-h-[500px] xl:max-h-[540px] object-contain drop-shadow-[0_25px_50px_rgba(37,99,235,0.18)] scale-100 lg:scale-[0.92] xl:scale-[0.96] origin-center lg:origin-right"
                   />
                 </div>
               </motion.div>
